@@ -1,0 +1,23 @@
+{
+    "/css/app.css": "/css/app.css",
+    "/css/all.css": "/css/all.css",
+    "/js/all.js": "/js/all.js",
+    "/js/trumbowyg/icons.svg": "/js/trumbowyg/icons.svg",
+    "/js/dropzone/basic.min.css": "/js/dropzone/basic.min.css",
+    "/js/dropzone/dropzone-amd-module.min.js": "/js/dropzone/dropzone-amd-module.min.js",
+    "/js/dropzone/dropzone.min.css": "/js/dropzone/dropzone.min.css",
+    "/js/dropzone/dropzone.min.js": "/js/dropzone/dropzone.min.js",
+    "/js/jquery-ui/AUTHORS.txt": "/js/jquery-ui/AUTHORS.txt",
+    "/js/jquery-ui/index.html": "/js/jquery-ui/index.html",
+    "/js/jquery-ui/jquery-ui.css": "/js/jquery-ui/jquery-ui.css",
+    "/js/jquery-ui/jquery-ui.js": "/js/jquery-ui/jquery-ui.js",
+    "/js/jquery-ui/jquery-ui.min.css": "/js/jquery-ui/jquery-ui.min.css",
+    "/js/jquery-ui/jquery-ui.min.js": "/js/jquery-ui/jquery-ui.min.js",
+    "/js/jquery-ui/jquery-ui.structure.css": "/js/jquery-ui/jquery-ui.structure.css",
+    "/js/jquery-ui/jquery-ui.structure.min.css": "/js/jquery-ui/jquery-ui.structure.min.css",
+    "/js/jquery-ui/jquery-ui.theme.css": "/js/jquery-ui/jquery-ui.theme.css",
+    "/js/jquery-ui/jquery-ui.theme.min.css": "/js/jquery-ui/jquery-ui.theme.min.css",
+    "/js/jquery-ui/LICENSE.txt": "/js/jquery-ui/LICENSE.txt",
+    "/js/jquery-ui/package.json": "/js/jquery-ui/package.json",
+    "/js/jquery-ui/README.md": "/js/jquery-ui/README.md"
+}

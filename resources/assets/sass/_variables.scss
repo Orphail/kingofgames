@@ -1,8 +1,17 @@
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+
 // Body
-$body-bg: #f5f8fa;
+$body-bg: #ffffff;
 
 // Typography
-$font-family-sans-serif: "Raleway", sans-serif;
+$font-family-sans-serif: 'Roboto', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+$primary: #4A90E2;
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;

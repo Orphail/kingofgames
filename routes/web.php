@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::get('/','Auth\LoginController@showLoginForm');
+
+Route::middleware(['auth:web'])->namespace('Common')->group(function() {
+    Route::get('my-profile',['as'=>'my-profile','uses'=>'MyProfileController@index']);
+    Route::patch('my-profile/{user}',['as'=>'my-profile.update','uses'=>'MyProfileController@update']);
+});
+
+Route::middleware(['auth:web','admin.protect'])->namespace('Admin')->group(function() {
+    Route::resource('admin','AdminController');
+    Route::resource('page','PageController');
+    Route::resource('parameter','ParameterController');
 });

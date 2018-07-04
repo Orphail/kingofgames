@@ -1,22 +1,37 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "axios": "^0.18",
-        "bootstrap": "^4.0.0",
-        "popper.js": "^1.12",
-        "cross-env": "^5.1",
-        "jquery": "^3.2",
-        "laravel-mix": "^2.0",
-        "lodash": "^4.17.4",
-        "vue": "^2.5.7"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "axios": "^0.18",
+    "bootstrap": "^4.0.0",
+    "cross-env": "^5.1",
+    "jquery": "^1.12.4",
+    "laravel-mix": "^2.0",
+    "lodash": "^4.17.4",
+    "popper.js": "^1.12",
+    "vue": "^2.5.7"
+  },
+  "dependencies": {
+    "awesomplete": "^1.1.2",
+    "bootstrap-datepicker": "^1.7.1",
+    "bootstrap-daterangepicker": "^2.1.30",
+    "bootstrap4-datetimepicker": "^5.2.3",
+    "dropzone": "^5.4.0",
+    "font-awesome": "^4.7.0",
+    "glyphicons-halflings": "^1.9.1",
+    "jquery-ui-dist": "^1.12.1",
+    "moment": "^2.21.0",
+    "normalize.css": "^8.0.0",
+    "npm": "^5.7.1",
+    "sweetalert": "^2.1.0",
+    "trumbowyg": "^2.9.4"
+  }
 }

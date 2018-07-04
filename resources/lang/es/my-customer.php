@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'home' => 'Mi empresa',
+    'title' => 'Mi empresa',
+    'setup' => 'Configuración',
+    'form' => 'Datos',
+    'welcome' => 'Mensaje de bienvenida',
+    'name' => 'Nombre',
+    'url' => 'Página web',
+    'business_name' => 'Nombre empresa',
+    'cif' => 'CIF',
+    'city' => 'Ciudad',
+    'contact' => 'Persona de contacto',
+    'address' => 'Dirección',
+    'region' => 'Provincia',
+    'postal_code' => 'Código postal',
+    'country' => 'País',
+    'phone' => 'Teléfono',
+    'logo' => 'Logo',
+    'banner' => 'Imagen',
+    'created_at' => 'Alta',
+    'disabled' => 'Estado',
+    'value' => 'Valor',
+    'users' => 'Usuarios',
+    'description' => 'Descripción',
+    'email' => 'E-mail de facturación',
+    'stats' => 'Estadísticas',
+    'default_locale' => 'Idioma por defecto',
+    'available_locales' => 'Idiomas disponibles'
+];

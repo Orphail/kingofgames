@@ -17,8 +17,20 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            if (Auth::guard($guard)->user()->disabled)
+            {
+                Auth::logout();
+                return redirect(route('login'))->withErrors(['email'=>'Este usuario ha sido bloqueado']);
+            }
+
+            if (Auth::guard($guard)->user()->admin)
+            {
+                return redirect(route('admin.index'));
+            } else {
+                return redirect(route('admin.index'));
+            }
         }
 
         return $next($request);
