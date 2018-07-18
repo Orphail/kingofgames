@@ -45,4 +45,9 @@ return [
     'cancel_campaign' => 'Cancelar alta de campaña y regresar al resumen de campañas',
     'modal_ask' => 'Estas seguro de que quieres eliminar este registro?',
     'modal_delete' => 'Eliminar registro',
+    'blog' => 'Blog',
+    'blog_creation' => 'Creación de entradas del blog',
+    'home-banner_creation' => 'Creación de las imágenes del slide de la home',
+    'website' => 'Sitio web',
+
 ];

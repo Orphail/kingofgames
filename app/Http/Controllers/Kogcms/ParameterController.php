@@ -6,7 +6,7 @@
  * Time: 9:09
  */
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Kogcms;
 
 
 use App\Http\Controllers\Controller;
@@ -22,19 +22,19 @@ class ParameterController extends Controller
         $field = ($request->get('sort')) ? $request->get('sort') : "id";
         $desc = ($request->get('order')) ? $request->get('order') : 'desc';
         $parameters = Parameter::orderBy($field, $desc)->paginate(25)->appends(['sort' => $field, 'desc' => $desc, 'filter' => $request->get('filter')]);
-        return view('admin.parameter.index',['results'=>$parameters]);
+        return view('kogcms.parameter.index',['results'=>$parameters]);
     }
 
     public function edit($id)
     {
         $parameter = Parameter::find($id);
-        return view('admin.parameter.form',['parameter'=>$parameter, 'route' => ['parameter.update',$parameter], 'method'=>'PATCH' ,'breadcrumb_title'=> trans('admin.edit')]);
+        return view('kogcms.parameter.form',['parameter'=>$parameter, 'route' => ['parameter.update',$parameter], 'method'=>'PATCH' ,'breadcrumb_title'=> trans('admin.edit')]);
     }
 
     public function create()
     {
         $parameter = new Parameter();
-        return view('admin.parameter.form',['parameter'=>$parameter, 'route' => ['parameter.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
+        return view('kogcms.parameter.form',['parameter'=>$parameter, 'route' => ['parameter.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
     }
 
     public function update($id, Request $request)

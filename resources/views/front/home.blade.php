@@ -1,0 +1,1 @@
+Ir a <a href="{{route('control.panel')}}">kogcms</a>

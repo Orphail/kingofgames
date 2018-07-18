@@ -6,7 +6,7 @@
  * Time: 9:09
  */
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Kogcms;
 
 
 use App\Http\Controllers\Controller;
@@ -24,13 +24,13 @@ class PageController extends Controller
         $desc = ($request->get('order'))?$request->get('order'):'desc';
         $pages = $Page->orderBy($field,$desc)->paginate(10);
         $pages->appends(['sort'=>$field, 'desc'=>$desc]);
-        return view('admin.page.index',['pages'=> $pages, 'sort'=>$field, 'desc'=>$desc]);
+        return view('kogcms.page.index',['pages'=> $pages, 'sort'=>$field, 'desc'=>$desc]);
     }
 
     public function edit($id)
     {
         $page = Page::find($id);
-        return view('admin.page.form',[
+        return view('kogcms.page.form',[
             'page'=>$page,
             'route' => ['page.update',$page],
             'method'=>'PATCH' ,
@@ -41,7 +41,7 @@ class PageController extends Controller
     public function create()
     {
         $page = new Page();
-        return view('admin.page.form',['page'=>$page, 'route' => ['page.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
+        return view('kogcms.page.form',['page'=>$page, 'route' => ['page.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
     }
 
     public function update(Page $page, Request $request)

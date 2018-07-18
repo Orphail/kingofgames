@@ -13,7 +13,7 @@
 <body class="mb-5">
 @include('partials.modal')
 @include('partials.form-delete')
-@include('admin.partials.menu')
+@include('kogcms.partials.menu')
 @include('partials.empty-modal')
 @yield('content')
 <footer>

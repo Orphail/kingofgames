@@ -1,7 +1,7 @@
-@extends('admin.base')
+@extends('kogcms.base')
 
 @section('content')
-    <div class="container-fluid mt-3">
+    <div class="container mt-3 mb-3">
         <div class="row">
             <div class="col-6 pl-4">
                 <h3><a href="{{route('parameter.index')}}" class="title-text">@lang('parameter.home')</a></h3>

@@ -1,13 +1,13 @@
-@extends('admin.base')
+@extends('kogcms.base')
 
 @section('content')
-    <div class="container-fluid mt-3">
+    <div class="container mt-3 mb-3">
         <div class="row">
             <div class="col-6 pl-4">
-                <h3><a href="{{route('admin.index')}}" class="title-text">@lang('user_admin.home')</a></h3>
+                <h3><a href="{{route('user.index')}}" class="title-text">@lang('user.home')</a></h3>
             </div>
             <div class="col-6 text-right">
-                <a class="btn btn-danger btn-sm" href="{{ route('admin.index') }}">@lang('admin.back')</a>
+                <a class="btn btn-danger btn-sm" href="{{ route('user.index') }}">@lang('admin.back')</a>
             </div>
         </div>
         <div class="card border-0">

@@ -1,4 +1,4 @@
-@extends('admin.base')
+@extends('kogcms.base')
 
 @section('content')
 

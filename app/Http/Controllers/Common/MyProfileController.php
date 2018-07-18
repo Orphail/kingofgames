@@ -18,7 +18,7 @@ class MyProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $baseTheme = (session('admin'))?'admin.base':'customer.base';
+        $baseTheme = 'kogcms.base';
         return view('common.my-profile',['user'=>$user,'baseTheme'=>$baseTheme]);
     }
 
@@ -36,8 +36,7 @@ class MyProfileController extends Controller
             $post['password'] = bcrypt($post['password']);
 
         $user->update($post);
-        $redirect = session('admin')?route('customer.index'):route('dashboard.index');
-        return redirect($redirect)->withMessage(trans('admin.edit_ok'));
+        return redirect(route('admin.index'))->withMessage(trans('admin.edit_ok'));
     }
 
 }

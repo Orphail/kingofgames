@@ -1,7 +1,7 @@
-@extends('admin.base')
+@extends('kogcms.base')
 
 @section('content')
-    <div class="container-fluid mt-3">
+    <div class="container mt-3 mb-3">
         <h3 class="title-text">@lang('page.home')</h3>
         <div class="card border-0">
             <div class="card-body">
@@ -13,7 +13,7 @@
                         <h2>No existen páginas</h2>
                     </div>
                 @else
-                    @include('admin.page.table')
+                    @include('kogcms.page.table')
                 @endif
             </div>
         </div>

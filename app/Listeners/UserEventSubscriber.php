@@ -18,13 +18,12 @@ class UserEventSubscriber
      */
     public function onUserLogin($event)
     {
+        // TODO - Cambiar validación de admin (no hay customer_id)
         if (is_null($event->user->customer_id))
         {
             Session::put('admin',true);
-            Session::put('customer_id',null);
         } else {
             Session::put('admin',false);
-            Session::put('customer_id',$event->user->customer_id);
         }
     }
 

@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/kogcms';
 
     /**
      * Create a new controller instance.
@@ -42,15 +42,13 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        $request->session()->put('language', $request->get('language'));
-        App::setLocale(session()->get('language', $request->get('language')));
+//        $request->session()->put('language', $request->get('language'));
+//        App::setLocale(session()->get('language', $request->get('language')));
 
-        if($user->customer){
-            if($user->customer->disabled) {
-                $this->guard()->logout();
-                $request->session()->invalidate();
-                return redirect('/')->withErrors(['email' => __('auth.account_disabled')]);
-            }
+        if (!$user->active) {
+            $this->guard()->logout();
+            $request->session()->invalidate();
+            return redirect('/kogcms')->withErrors(['email' => __('auth.account_disabled')]);
         }
     }
 }

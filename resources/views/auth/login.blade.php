@@ -41,12 +41,6 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
-                                    {!! Form::select('language',config('available_locales'),null, ['class'=>'form-control']) !!}
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('auth.remember_me') }}

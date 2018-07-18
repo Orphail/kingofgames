@@ -16,7 +16,7 @@ return [
     'throttle' => 'Demasiados intentos de inicio de sesión. Vuelva a intentarlo en :seconds segundos.',
     'email' => 'E-Mail',
     'password' => 'Contraseña',
-    'account_disabled' => 'La cuenta del cliente ha sido bloqueada. Para más información póngase en contacto con Laboite',
+    'account_disabled' => 'La cuenta de usuario ha sido bloqueada',
     'remember_me' => 'Mantenerme conectado',
     'login' => 'Acceder',
     'forgot_password' => 'Recordar contraseña',

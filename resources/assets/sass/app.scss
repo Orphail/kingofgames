@@ -182,8 +182,22 @@ h1#logo {
   background-color: #000000 !important;
 }
 
+#navbarSupportedContent .dropdown-menu {
+  background-color: black !important;
+}
+
 .nav-item {
   font-weight: bold;
+  a.dropdown-item{
+    color:white !important;
+    font-weight: bold;
+    &:hover {
+      background-color: black !important;
+      color: lighten(yellow, 40%) !important;
+      text-decoration: none;
+    }
+  }
+
   &.active {
     a {
       color: yellow !important;
@@ -191,11 +205,30 @@ h1#logo {
         color: yellow !important;
       }
     }
+    a.dropdown-item{
+      color:white !important;
+      font-weight: bold;
+      &:hover {
+        background-color: black !important;
+        color: lighten(yellow, 40%) !important;
+        text-decoration: none;
+      }
+    }
+    a.dropdown-item.active{
+      color: yellow !important;
+      background-color: black !important;
+      font-weight: bold;
+      &:hover {
+        background-color: black !important;
+        color: yellow !important;
+        text-decoration: none;
+      }
+    }
   }
   a {
     color: #ffffff !important;
     &:hover {
-      color: lighten(yellow, 20%) !important;
+      color: lighten(yellow, 40%) !important;
     }
   }
 }
@@ -276,3 +309,16 @@ svg > g > g:last-child {
   pointer-events: none
 }
 
+.change-boolean {
+  cursor: pointer;
+}
+
+.change-order {
+  width: 30px;
+  text-align: center;
+}
+
+.small-thumbnail {
+  max-width:300px;
+  max-height:100px;
+}

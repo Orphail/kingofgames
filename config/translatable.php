@@ -14,9 +14,6 @@ return [
         'es',
         'en',
         'ca',
-        'de',
-        'ru',
-        'fr'
     ],
 
     /*
@@ -78,7 +75,7 @@ return [
     | set it to false.
     |
     */
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------

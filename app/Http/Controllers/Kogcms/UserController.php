@@ -6,34 +6,34 @@
  * Time: 9:09
  */
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Kogcms;
 
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
 
     public function index(Request $request)
     {
         $field = ($request->get('sort')) ? $request->get('sort') : "id";
         $desc = ($request->get('order')) ? $request->get('order') : 'desc';
-        $users = User::whereAdmin(true)->orderBy($field, $desc)->paginate(25)->appends(['sort' => $field, 'desc' => $desc, 'filter' => $request->get('filter')]);
-        return view('admin.user.index',['results'=> $users]);
+        $users = User::whereAdmin(false)->orderBy($field, $desc)->paginate(25)->appends(['sort' => $field, 'desc' => $desc, 'filter' => $request->get('filter')]);
+        return view('kogcms.user.index',['results'=> $users]);
     }
 
     public function edit($id)
     {
         $user = User::find($id);
-        return view('admin.user.form',['user'=>$user, 'route' => ['admin.update',$user], 'method'=>'PATCH' ,'breadcrumb_title'=> trans('admin.edit')]);
+        return view('kogcms.user.form',['user'=>$user, 'route' => ['user.update',$user], 'method'=>'PATCH' ,'breadcrumb_title'=> trans('admin.edit')]);
     }
 
     public function create()
     {
         $user = new User();
-        return view('admin.user.form',['user'=>$user, 'route' => ['admin.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
+        return view('kogcms.user.form',['user'=>$user, 'route' => ['user.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
     }
 
     public function update($id, Request $request)
@@ -52,7 +52,7 @@ class AdminController extends Controller
 
         $post['disabled'] = $request->get('disabled')?1:0;
         $user->update($post);
-        return redirect(route('admin.index'))->withMessage(trans('admin.edit_ok'));
+        return redirect(route('user.index'))->withMessage(trans('admin.edit_ok'));
     }
 
 
@@ -66,11 +66,10 @@ class AdminController extends Controller
         ]);
         $post = $request->all();
         $post['password'] = bcrypt($post['password']);
-        $post['admin'] = true;
-        $post['customer_id'] = null;
+        $post['admin'] = false;
         $post['disabled'] = $request->get('disabled')?1:0;
         $User->create($post);
-        return redirect(route('admin.index'))->withMessage(trans('admin.insert_ok'));
+        return redirect(route('user.index'))->withMessage(trans('admin.insert_ok'));
     }
 
     public function destroy($user)
@@ -78,11 +77,11 @@ class AdminController extends Controller
         try{
             $user = User::find($user);
             $user->delete();
-            return redirect(route('admin.index'))->withMessage(trans('admin.delete_ok'));
+            return redirect(route('user.index'))->withMessage(trans('admin.delete_ok'));
 
         } catch (\Exception $exception)
         {
-            return redirect(route('admin.index'))->withMessage($exception->getMessage());
+            return redirect(route('user.index'))->withMessage($exception->getMessage());
         }
     }
 }

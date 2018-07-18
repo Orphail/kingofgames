@@ -11190,8 +11190,23 @@ h1#logo {
   background-color: #000000 !important;
 }
 
+#navbarSupportedContent .dropdown-menu {
+  background-color: black !important;
+}
+
 .nav-item {
   font-weight: bold;
+}
+
+.nav-item a.dropdown-item {
+  color: white !important;
+  font-weight: bold;
+}
+
+.nav-item a.dropdown-item:hover {
+  background-color: black !important;
+  color: #ffffcc !important;
+  text-decoration: none;
 }
 
 .nav-item.active a {
@@ -11202,12 +11217,35 @@ h1#logo {
   color: yellow !important;
 }
 
+.nav-item.active a.dropdown-item {
+  color: white !important;
+  font-weight: bold;
+}
+
+.nav-item.active a.dropdown-item:hover {
+  background-color: black !important;
+  color: #ffffcc !important;
+  text-decoration: none;
+}
+
+.nav-item.active a.dropdown-item.active {
+  color: yellow !important;
+  background-color: black !important;
+  font-weight: bold;
+}
+
+.nav-item.active a.dropdown-item.active:hover {
+  background-color: black !important;
+  color: yellow !important;
+  text-decoration: none;
+}
+
 .nav-item a {
   color: #ffffff !important;
 }
 
 .nav-item a:hover {
-  color: #ffff66 !important;
+  color: #ffffcc !important;
 }
 
 .footer {
@@ -11284,6 +11322,20 @@ h1#logo {
 
 svg > g > g:last-child {
   pointer-events: none;
+}
+
+.change-boolean {
+  cursor: pointer;
+}
+
+.change-order {
+  width: 30px;
+  text-align: center;
+}
+
+.small-thumbnail {
+  max-width: 300px;
+  max-height: 100px;
 }
 
 

@@ -1,3 +1,4 @@
+@inject('CommonController','App\Http\Controllers\Kogcms\CommonController')
 @include('partials.form-totals')
 
 <table class="table table-comercios table-striped">
@@ -22,17 +23,7 @@
 				<td>
 					{{ $user->created_at->format('d-m-Y') }}
 				</td>
-				<td>
-					@if ($user->disabled)
-						<span class="label label-round label-danger">
-							@lang('admin.disabled')
-						</span>
-					@else
-						<span class="label label-round label-success">
-							@lang('admin.enabled')
-						</span>
-					@endif
-				</td>
+				<td>{!! $CommonController->getBooleanInput($user) !!}</td>
 				<td>
 					<div class="dropdown pull-right">
 						<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
