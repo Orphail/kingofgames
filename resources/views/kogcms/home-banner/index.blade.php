@@ -5,7 +5,7 @@
         <h3 class="title-text">@lang('home-banner.home')</h3>
         <div class="card border-0">
             <div class="card-body">
-                <div class="text-right">
+                <div class="text-right mb-3">
                     <a class="btn btn-primary btn-sm" href="{{ route('home-banner.create') }}">@lang('admin.create')</a>
                 </div>
                 @if($HomeBanners->isEmpty())

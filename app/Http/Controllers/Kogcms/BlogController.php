@@ -35,8 +35,11 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = Blog::find($id);
+        $tags = $blog->allTags();
+
         return view('kogcms.blog.form', [
             'blog' => $blog,
+            'tags' => $tags,
             'route' => ['blog.update', $blog],
             'method' => 'PATCH',
             'breadcrumb_title' => trans('admin.edit'),
@@ -46,8 +49,11 @@ class BlogController extends Controller
     public function create()
     {
         $blog = new Blog();
+        $tags = $blog->allTags();
+
         return view('kogcms.blog.form', [
             'blog' => $blog,
+            'tags' => $tags,
             'route' => ['blog.store'],
             'method' => 'POST',
             'breadcrumb_title' => trans('admin.create'),
@@ -75,7 +81,7 @@ class BlogController extends Controller
         if (array_key_exists('delete_image', $post)) {
             $post['image'] = null;
         }
-
+        $post['tags'] = json_encode($post['tags']);
         $blog->update($post);
         return redirect(route('blog.index'))->withMessage(trans('admin.insert_ok'));
     }
@@ -100,7 +106,7 @@ class BlogController extends Controller
         if (array_key_exists('delete_image', $post)) {
             $post['image'] = null;
         }
-
+        $post['tags'] = json_encode($post['tags']);
         $blog->create($post);
         return redirect(route('blog.index'))->withMessage(trans('admin.insert_ok'));
     }

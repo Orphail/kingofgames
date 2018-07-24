@@ -20,8 +20,9 @@ class CreateblogsTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->unsignedInteger('blog_category_id')->nullable();
-            $table->string('link')->nullable();
-            $table->string('SEO')->nullable();
+            $table->string('tags')->nullable();
+            $table->string('status')->nullable();
+            $table->date('post_date')->nullable();
             $table->timestamps();
             $table->foreign('blog_category_id')->references('id')->on('blog_categories')->onDelete('cascade');
         });

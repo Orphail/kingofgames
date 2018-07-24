@@ -23,12 +23,13 @@
                             <li class="nav-item {{ preg_match('/page/',url()->current())?'active':'' }}">
                                 <a class="nav-link" href="{{ route('page.index') }}">@lang('page.home')</a>
                             </li>
-                            <li class="nav-item dropdown {{ preg_match('/\b(blog|blogCategory|home-banner)\b/',url()->current())?'active':'' }}">
+                            <li class="nav-item dropdown {{ preg_match('/\b(blog|blogCategory|tag|home-banner)\b/',url()->current())?'active':'' }}">
                                 <a class="nav-link dropdown-toggle"
                                    href="#" data-toggle="dropdown">@lang('admin.blog')</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item {{ preg_match('/blogCategory/',url()->current())?'active':'' }}" href="{{ route('blogCategory.index') }}">@lang('blog_category.home')</a>
                                     <a class="dropdown-item {{ preg_match('/\b(blog)\b/',url()->current())?'active':'' }}" href="{{ route('blog.index') }}">@lang('blog.home')</a>
+                                    <a class="dropdown-item {{ preg_match('/blogCategory/',url()->current())?'active':'' }}" href="{{ route('blogCategory.index') }}">@lang('blog_category.home')</a>
+                                    <a class="dropdown-item {{ preg_match('/tag/',url()->current())?'active':'' }}" href="{{ route('tag.index') }}">@lang('tag.home')</a>
                                     <a class="dropdown-item {{ preg_match('/home-banner/',url()->current())?'active':'' }}" href="{{ route('home-banner.index') }}">@lang('home-banner.home')</a>
                                 </div>
                             </li>

@@ -20,6 +20,7 @@ mix.sass(
     'public/css/app.css',
     'node_modules/font-awesome/css/font-awesome.css',
     'node_modules/trumbowyg/dist/ui/trumbowyg.css',
+    'node_modules/select2/dist/css/select2.css',
     'node_modules/awesomplete/awesomplete.base.css',
     'node_modules/awesomplete/awesomplete.css'
     //'node_modules/bootstrap-daterangepicker/daterangepicker.css',
@@ -34,6 +35,7 @@ mix.scripts([
     'node_modules/moment/min/moment-with-locales.js',
     'node_modules/bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
     'node_modules/trumbowyg/dist/trumbowyg.js',
+    'node_modules/select2/dist/js/select2.js',
     'node_modules/awesomplete/awesomplete.js',
     'resources/assets/js/app.js'
 ], 'public/js/all.js');

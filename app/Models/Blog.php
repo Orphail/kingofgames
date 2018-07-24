@@ -10,11 +10,12 @@ class Blog extends Model
     protected $fillable = [
         'image',
         'blog_category_id',
-        'link',
+        'tags',
         'title',
         'summary',
         'description',
-        'SEO'
+        'status',
+        'post_date',
     ];
 
     public $guarded = ['_token'];
@@ -23,8 +24,14 @@ class Blog extends Model
         'title' => 'required',
         'summary' => 'required',
         'description' => 'required',
-        'link' => 'nullable|url',
     ];
+
+    public function getAllStatus()
+    {
+        return [
+          'Borrador', 'Publicado', 'Programado', 'Descartado'
+        ];
+    }
 
     public function category()
     {
@@ -39,6 +46,11 @@ class Blog extends Model
     public function allBlogCategories()
     {
         return BlogCategory::pluck('name', 'id');
+    }
+
+    public function allTags()
+    {
+        return Tag::pluck('name', 'id');
     }
 
 }
