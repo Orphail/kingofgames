@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Kogcms;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -84,4 +85,11 @@ class UserController extends Controller
             return redirect(route('user.index'))->withMessage($exception->getMessage());
         }
     }
+
+    public function loginAsMember($member_id)
+    {
+        Session::put('member_id',$member_id);
+        return redirect(route('dashboard.index'));
+    }
+
 }

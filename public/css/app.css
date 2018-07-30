@@ -10420,7 +10420,7 @@ image {
 }
 
 #alert {
-  bottom: 10px;
+  bottom: 40px;
   position: fixed;
   left: 0;
   width: 100%;
@@ -10729,8 +10729,8 @@ svg > g > g:last-child {
 }
 
 .small-thumbnail {
-  max-width: 300px;
-  max-height: 100px;
+  max-width: 80px;
+  max-height: 80px;
 }
 
 .card-header:first-child {

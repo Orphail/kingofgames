@@ -47,6 +47,11 @@
                             <p class="invalid-feedback">{{ $errors->first('status')}}</p>
                         </div>
                         <div class="form-group">
+                            {!! Form::label('author',trans('blog.author')) !!}
+                            {!! Form::select('author',$blog->getAllAuthors(),null, ['class' => 'form-control '.($errors->has('author')?'is-invalid':null)]) !!}
+                            <p class="invalid-feedback">{{ $errors->first('author')}}</p>
+                        </div>
+                        <div class="form-group">
                             @if($blog->image)
                                 <img src="{{ asset('uploads/'.$blog->image) }}" class="small-thumbnail">
                             @endif

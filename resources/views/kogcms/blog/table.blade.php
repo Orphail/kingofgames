@@ -6,6 +6,7 @@
 			<th>@lang('blog.summary')</th>
 			<th>@lang('blog.category')</th>
 			<th>@lang('blog.tags')</th>
+			<th>@lang('blog.author')</th>
 			<th>@lang('admin.created_at')</th>
 			<th class="text-right">@lang('admin.options')</th>
 		</tr>
@@ -22,6 +23,7 @@
 				<td>{{ str_limit($blog->summary, 100) }}</td>
 				<td>{{ $blog->categoryName($blog->blog_category_id) }}</td>
 				<td>{{ implode(', ',json_decode($blog->tags)) }}</td>
+				<td>{{ $blog->getAuthorName() }}</td>
 				<td>{{ $blog->created_at->format('d-m-Y') }}</td>
 				<td>
 					<div class="dropdown pull-right">

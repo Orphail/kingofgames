@@ -36,4 +36,9 @@ Route::middleware(['auth:web','admin.protect'])->namespace('Kogcms')->group(func
     Route::get('change-boolean', ['as' => 'itemcms.change-boolean', 'uses' => 'CommonController@changeBoolean']);
     Route::get('change-order', ['as' => 'itemcms.change-order', 'uses' => 'CommonController@changeOrder']);
 
+    Route::get('member/login-as/{user_id}',['as'=>'member.login-as-member','uses'=>'UserController@loginAsMember']);
+});
+
+Route::middleware(['auth:web'])->namespace('Member')->group(function() {
+    Route::get('dashboard',['as'=>'dashboard.index','uses'=>'DashboardController@index']);
 });

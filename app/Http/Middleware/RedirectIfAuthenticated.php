@@ -29,7 +29,7 @@ class RedirectIfAuthenticated
             {
                 return redirect(route('admin.index'));
             } else {
-                return redirect(route('admin.index'));
+                return redirect(route('dashboard.index'));
             }
         }
 

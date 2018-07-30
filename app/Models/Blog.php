@@ -10,6 +10,7 @@ class Blog extends Model
     protected $fillable = [
         'image',
         'blog_category_id',
+        'author',
         'tags',
         'title',
         'summary',
@@ -53,4 +54,18 @@ class Blog extends Model
         return Tag::pluck('name', 'id');
     }
 
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getAuthorName()
+    {
+        return User::find($this->author)->name;
+    }
+
+    public function getAllAuthors()
+    {
+        return User::where('admin', true)->pluck('name', 'id');
+    }
 }

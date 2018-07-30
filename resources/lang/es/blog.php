@@ -15,4 +15,5 @@ return [
     'description' => 'Descripción',
     'empty_blogs' => 'No existen blogs',
     'actions' => 'Acciones',
+    'author' => 'Autor',
 ];

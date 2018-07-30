@@ -1,3 +1,4 @@
+@inject('CommonController','App\Http\Controllers\Kogcms\CommonController')
 @include('partials.form-totals')
 
 <table class="table table-comercios table-striped">
@@ -14,7 +15,7 @@
 		@foreach($results as $user)
 			<tr>
 				<td>
-					<b>{{ $user->name }}</b>
+					<a href="{{ route('member.login-as-member',$user->id) }}"><b>{{ $user->name }}</b></a>
 				</td>
 				<td>
 					<a href="mailto:{{ $user->email  }}">{{ $user->email }}</a>
@@ -30,9 +31,9 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-right">
-								<li><a class="dropdown-item" href="{{ route('admin.edit', $user) }}">@lang('admin.edit')</a></li>
+								<li><a class="dropdown-item" href="{{ route('user.edit', $user) }}">@lang('admin.edit')</a></li>
 								<li role="separator" class="dropdown-divider"></li>
-								<li><a class="dropdown-item delete" href="{{ route('admin.destroy',$user) }}">@lang('admin.delete')</a></li>
+								<li><a class="dropdown-item delete" href="{{ route('user.destroy',$user) }}">@lang('admin.delete')</a></li>
 						</ul>
 					</div>
 				</td>
