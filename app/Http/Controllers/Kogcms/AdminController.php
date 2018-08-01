@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: fidel
- * Date: 16/3/18
- * Time: 9:09
- */
 
 namespace App\Http\Controllers\Kogcms;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,27 +14,27 @@ class AdminController extends Controller
     {
         $field = ($request->get('sort')) ? $request->get('sort') : "id";
         $desc = ($request->get('order')) ? $request->get('order') : 'desc';
-        $users = User::whereAdmin(true)->orderBy($field, $desc)->paginate(25)->appends(['sort' => $field, 'desc' => $desc, 'filter' => $request->get('filter')]);
-        return view('kogcms.admin.index',['results'=> $users]);
+        $admins = Admin::orderBy($field, $desc)->paginate(25)->appends(['sort' => $field, 'desc' => $desc, 'filter' => $request->get('filter')]);
+        return view('kogcms.admin.index',['results'=> $admins]);
     }
 
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('kogcms.admin.form',['user'=>$user, 'route' => ['admin.update',$user], 'method'=>'PATCH' ,'breadcrumb_title'=> trans('admin.edit')]);
+        $admin = Admin::find($id);
+        return view('kogcms.admin.form',['admin'=>$admin, 'route' => ['admin.update',$admin], 'method'=>'PATCH' ,'breadcrumb_title'=> trans('admin.edit')]);
     }
 
     public function create()
     {
-        $user = new User();
-        return view('kogcms.admin.form',['user'=>$user, 'route' => ['admin.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
+        $admin = new Admin();
+        return view('kogcms.admin.form',['admin'=>$admin, 'route' => ['admin.store'], 'method'=>'POST','breadcrumb_title'=>trans('admin.create')]);
     }
 
     public function update($id, Request $request)
     {
-        $user = User::find($id);
-        $rules = $user->rules;
-        $rules['email'] = 'required|email|unique:users,email,'.$user->id;
+        $admin = Admin::find($id);
+        $rules = $admin->rules;
+        $rules['email'] = 'required|email|unique:admins,email,'.$admin->id;
         if (is_null($request->get('password')))
         {
             unset($rules['password']);
@@ -51,32 +45,31 @@ class AdminController extends Controller
             $post['password'] = bcrypt($post['password']);
 
         $post['disabled'] = $request->get('disabled')?1:0;
-        $user->update($post);
+        $admin->update($post);
         return redirect(route('admin.index'))->withMessage(trans('admin.edit_ok'));
     }
 
 
     public function store(Request $request)
     {
-        $User = new User();
+        $Admin = new Admin();
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
+            'nickname' => 'required|max:255',
+            'email' => 'required|email|unique:admins',
             'password' => 'required|confirmed|min:8|max:16|alpha_dash'
         ]);
         $post = $request->all();
         $post['password'] = bcrypt($post['password']);
-        $post['admin'] = true;
         $post['disabled'] = $request->get('disabled')?1:0;
-        $User->create($post);
+        $Admin->create($post);
         return redirect(route('admin.index'))->withMessage(trans('admin.insert_ok'));
     }
 
-    public function destroy($user)
+    public function destroy($admin)
     {
         try{
-            $user = User::find($user);
-            $user->delete();
+            $admin = Admin::find($admin);
+            $admin->delete();
             return redirect(route('admin.index'))->withMessage(trans('admin.delete_ok'));
 
         } catch (\Exception $exception)

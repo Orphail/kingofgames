@@ -7,7 +7,7 @@
 			<th><a href="{{ route('user.index',['filter'=> request('filter'), 'sort'=>'name','order'=>(request('sort')=='name' && request('order')=="asc"?'desc':'asc')]) }}">@lang('user.name')</a></th>
 			<th><a href="{{ route('user.index',['filter'=> request('filter'), 'sort'=>'email','order'=>(request('sort') && request('order')=="asc"?'desc':'asc')]) }}">Email</a></th>
 			<th><a href="{{ route('user.index',['filter'=> request('filter'), 'sort'=>'created_at','order'=>(request('sort')=='created_at' && request('order')=="asc"?'desc':'asc')]) }}">@lang('user.created_at')</a></th>
-			<th><a href="{{ route('user.index',['filter'=> request('filter'), 'sort'=>'disabled','order'=>(request('sort')=='disabled' && request('order')=="asc"?'desc':'asc')]) }}">@lang('user.disabled')</a></th>
+			<th><a href="{{ route('user.index',['filter'=> request('filter'), 'sort'=>'disabled','order'=>(request('sort')=='disabled' && request('order')=="asc"?'desc':'asc')]) }}">@lang('user.enabled')</a></th>
 			<th class="text-right">@lang('admin.options')</th>
 		</tr>
 	</thead>
@@ -15,13 +15,13 @@
 		@foreach($results as $user)
 			<tr>
 				<td>
-					<a href="{{ route('member.login-as-member',$user->id) }}"><b>{{ $user->name }}</b></a>
+					<a href="{{ route('member.login-as-member',$user->id) }}"><b>{{ $user->nickname }}</b></a>
 				</td>
 				<td>
 					<a href="mailto:{{ $user->email  }}">{{ $user->email }}</a>
 				</td>
 				<td>
-					{{ $user->created_at->format('d-m-Y') }}
+					{{ $user->created_at ? $user->created_at->format('d-m-Y') : '' }}
 				</td>
 				<td>{!! $CommonController->getBooleanInput($user) !!}</td>
 				<td>

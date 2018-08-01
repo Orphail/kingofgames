@@ -8,6 +8,7 @@
 
 namespace App\Listeners;
 use App\Http\Requests\Request;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
 
@@ -18,7 +19,7 @@ class UserEventSubscriber
      */
     public function onUserLogin($event)
     {
-        if ($event->user->admin)
+        if ($event->user instanceOf Admin)
         {
             Session::put('admin',true);
             Session::put('member_id',null);

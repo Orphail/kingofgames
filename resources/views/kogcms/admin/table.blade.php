@@ -4,26 +4,26 @@
 <table class="table table-comercios table-striped">
 	<thead>
 		<tr>
-			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'name','order'=>(request('sort')=='name' && request('order')=="asc"?'desc':'asc')]) }}">@lang('user.name')</a></th>
+			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'name','order'=>(request('sort')=='name' && request('order')=="asc"?'desc':'asc')]) }}">@lang('admin.nickname')</a></th>
 			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'email','order'=>(request('sort') && request('order')=="asc"?'desc':'asc')]) }}">Email</a></th>
-			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'created_at','order'=>(request('sort')=='created_at' && request('order')=="asc"?'desc':'asc')]) }}">@lang('user.created_at')</a></th>
-			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'disabled','order'=>(request('sort')=='disabled' && request('order')=="asc"?'desc':'asc')]) }}">@lang('user.disabled')</a></th>
+			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'created_at','order'=>(request('sort')=='created_at' && request('order')=="asc"?'desc':'asc')]) }}">@lang('admin.created_at')</a></th>
+			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'disabled','order'=>(request('sort')=='disabled' && request('order')=="asc"?'desc':'asc')]) }}">@lang('admin.enabled')</a></th>
 			<th class="text-right">@lang('admin.options')</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($results as $user)
+		@foreach($results as $admin)
 			<tr>
 				<td>
-					<b>{{ $user->name }}</b>
+					<b>{{ $admin->nickname }}</b>
 				</td>
 				<td>
-					<a href="mailto:{{ $user->email  }}">{{ $user->email }}</a>
+					<a href="mailto:{{ $admin->email  }}">{{ $admin->email }}</a>
 				</td>
 				<td>
-					{{ $user->created_at->format('d-m-Y') }}
+					{{ $admin->created_at->format('d-m-Y') }}
 				</td>
-				<td>{!! $CommonController->getBooleanInput($user) !!}</td>
+				<td>{!! $CommonController->getBooleanInput($admin) !!}</td>
 				<td>
 					<div class="dropdown pull-right">
 						<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
@@ -31,9 +31,9 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-right">
-								<li><a class="dropdown-item" href="{{ route('admin.edit', $user) }}">@lang('admin.edit')</a></li>
+								<li><a class="dropdown-item" href="{{ route('admin.edit', $admin) }}">@lang('admin.edit')</a></li>
 								<li role="separator" class="dropdown-divider"></li>
-								<li><a class="dropdown-item delete" href="{{ route('admin.destroy',$user) }}">@lang('admin.delete')</a></li>
+								<li><a class="dropdown-item delete" href="{{ route('admin.destroy',$admin) }}">@lang('admin.delete')</a></li>
 						</ul>
 					</div>
 				</td>

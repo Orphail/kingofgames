@@ -25,10 +25,10 @@ class RedirectIfAuthenticated
                 return redirect(route('login'))->withErrors(['email'=>'Este usuario ha sido bloqueado']);
             }
 
-            if (Auth::guard($guard)->user()->admin)
+            if (Auth::guard($guard)->user())
             {
                 return redirect(route('admin.index'));
-            } else {
+            } elseif(Auth::guard($guard)->user()) {
                 return redirect(route('dashboard.index'));
             }
         }

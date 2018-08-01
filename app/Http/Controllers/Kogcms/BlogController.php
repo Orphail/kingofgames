@@ -82,7 +82,7 @@ class BlogController extends Controller
             $post['image'] = null;
         }
         $post['tags'] = json_encode($post['tags']);
-        $post['author'] = $request->get('author') ? $request->get('author') : $request->session()->get('user_id');
+        $post['author'] = $request->get('author') ? $request->get('author') : $request->session()->get('admin_id');
         $blog->update($post);
         return redirect(route('blog.index'))->withMessage(trans('admin.insert_ok'));
     }
@@ -108,7 +108,7 @@ class BlogController extends Controller
             $post['image'] = null;
         }
         $post['tags'] = json_encode($post['tags']);
-        $post['author'] = $request->get('author') ? $request->get('author') : $request->session()->get('user_id');
+        $post['author'] = $request->get('author') ? $request->get('author') : $request->session()->get('admin_id');
         $blog->create($post);
         return redirect(route('blog.index'))->withMessage(trans('admin.insert_ok'));
     }

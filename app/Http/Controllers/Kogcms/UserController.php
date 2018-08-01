@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $field = ($request->get('sort')) ? $request->get('sort') : "id";
         $desc = ($request->get('order')) ? $request->get('order') : 'desc';
-        $users = User::whereAdmin(false)->orderBy($field, $desc)->paginate(25)->appends(['sort' => $field, 'desc' => $desc, 'filter' => $request->get('filter')]);
+        $users = User::orderBy($field, $desc)->paginate(25)->appends(['sort' => $field, 'desc' => $desc, 'filter' => $request->get('filter')]);
         return view('kogcms.user.index',['results'=> $users]);
     }
 
@@ -61,13 +61,12 @@ class UserController extends Controller
     {
         $User = new User();
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'nickname' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8|max:16|alpha_dash'
         ]);
         $post = $request->all();
         $post['password'] = bcrypt($post['password']);
-        $post['admin'] = false;
         $post['disabled'] = $request->get('disabled')?1:0;
         $User->create($post);
         return redirect(route('user.index'))->withMessage(trans('admin.insert_ok'));

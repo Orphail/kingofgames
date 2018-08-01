@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Customer;
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Mail\PasswordReset;
+use Illuminate\Support\Facades\Mail;
 
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
 
@@ -18,11 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nickname',
-        'email',
-        'password',
-        'newsletter',
-        'disabled'
+        'nickname', 'email', 'password', 'commerce_id', 'disabled'
     ];
 
     /**
@@ -31,18 +27,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     public $rules = [
         'nickname' => 'required|max:255',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|confirmed|min:8|max:16|alpha_dash'
-    ];
+        'email' => 'required|email|unique:admins',
+        'password' => 'required|confirmed|min:8|max:16|alpha_dash'];
 
-    public function blogs()
+    public function sendPasswordResetNotification($token)
     {
-        return $this->hasMany(Blog::class);
+        Mail::to($this->email)->send(new PasswordReset($token));
     }
 }

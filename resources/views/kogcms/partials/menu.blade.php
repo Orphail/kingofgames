@@ -11,14 +11,8 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item {{ preg_match('/admin/',url()->current())?'active':'' }}">
-                                <a class="nav-link" href="{{ route('admin.index') }}">@lang('user_admin.home')</a>
-                            </li>
                             <li class="nav-item {{ preg_match('/user/',url()->current())?'active':'' }}">
                                 <a class="nav-link" href="{{ route('user.index') }}">@lang('user.home')</a>
-                            </li>
-                            <li class="nav-item {{ preg_match('/parameter/',url()->current())?'active':'' }}">
-                                <a class="nav-link" href="{{ route('parameter.index') }}">@lang('parameter.home')</a>
                             </li>
                             <li class="nav-item {{ preg_match('/page/',url()->current())?'active':'' }}">
                                 <a class="nav-link" href="{{ route('page.index') }}">@lang('page.home')</a>
@@ -34,7 +28,16 @@
                                 </div>
                             </li>
                         </ul>
-                        <a class="btn btn-primary pull-right" href="{{ route('my-profile') }}"><i class="fa fa-user"></i></a>&nbsp;
+                        <div class="btn-group mr-1">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{{ route('admin.index') }}">@lang('user_admin.home')</a>
+                                <a class="dropdown-item" href="{{ route('user.index') }}">@lang('user.home')</a>
+                                <a class="dropdown-item" href="{{ route('parameter.index') }}">@lang('parameter.home')</a>
+                            </div>
+                        </div>
                         <form class="form-inline my-2 my-lg-0" action="{{ route('logout') }}" method="post">
                             @csrf
                             <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-power-off"></i></button>

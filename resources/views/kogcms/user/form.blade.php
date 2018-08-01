@@ -21,9 +21,9 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::label('name',trans('user.name').'*', ['class' => 'font-weight-bold']) !!}
-                            {!! Form::text('name',null, ['class' => 'form-control '.($errors->has('name')?'is-invalid':null),'required'=>true]) !!}
-                            <p class="invalid-feedback">{{ $errors->first('name')}}</p>
+                            {!! Form::label('nickname',trans('user.nickname').'*', ['class' => 'font-weight-bold']) !!}
+                            {!! Form::text('nickname',null, ['class' => 'form-control '.($errors->has('nickname')?'is-invalid':null),'required'=>true]) !!}
+                            <p class="invalid-feedback">{{ $errors->first('nickname')}}</p>
                         </div>
                         <div class="form-group">
                             {!! Form::label('email',trans('user.email').'*', ['class' => 'font-weight-bold']) !!}

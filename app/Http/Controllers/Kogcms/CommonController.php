@@ -11,20 +11,20 @@ class CommonController extends Controller
     public function changeBoolean(Request $request)
     {
         $res = DB::table($request->table)->select($request->field)->whereId($request->id)->first();
-        DB::table($request->table)->whereId($request->id)->update([$request->field => abs($res->active - 1)]);
+        DB::table($request->table)->whereId($request->id)->update([$request->field => abs($res->disabled - 1)]);
         return response()->json([
-            'class' => $res->active ? 'fa-circle-o' : 'fa-check-circle-o',
+            'class' => $res->disabled ? 'fa-check-circle-o' : 'fa-circle-o',
             'success' => true
         ]);
     }
 
     public function getBooleanInput($model)
     {
-        $class = $model->active ? 'fa-check-circle-o' : 'fa-circle-o';
+        $class = $model->disabled ? 'fa-circle-o' : 'fa-check-circle-o';
         return '<div data-href="' . route('itemcms.change-boolean', [
                 'table' => $model->getTable(),
                 'id' => $model->id,
-                'field' => 'active'
+                'field' => 'disabled'
             ]) . '"
         class="change-boolean fa fa-lg ' . $class . '"></div>';
     }

@@ -4,7 +4,7 @@
     <div class="bg-light pb-5" id="dashboard">
         <div class="container">
             <div class="pt-4 pb-3">
-                <h2 class="title-text">Hola {{$member->name}}</h2>
+                <h2 class="title-text">Hola {{$member->nickname}}</h2>
                 <p>Bienvenido a tu resumen de derrotas y rageadas varias</p>
             </div>
             <div class="row">

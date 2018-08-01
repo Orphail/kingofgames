@@ -17,33 +17,33 @@
                         <p>@lang('admin.required_fields')</p>
                     </div>
                 </div>
-                {!! Form::model($user, ['route' => $route, 'method'=>$method]) !!}
+                {!! Form::model($admin, ['route' => $route, 'method'=>$method]) !!}
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::label('name',trans('user.name').'*', ['class' => 'font-weight-bold']) !!}
-                            {!! Form::text('name',null, ['class' => 'form-control '.($errors->has('name')?'is-invalid':null),'required'=>true]) !!}
-                            <p class="invalid-feedback">{{ $errors->first('name')}}</p>
+                            {!! Form::label('nickname',trans('admin.nickname').'*', ['class' => 'font-weight-bold']) !!}
+                            {!! Form::text('nickname',null, ['class' => 'form-control '.($errors->has('nickname')?'is-invalid':null),'required'=>true]) !!}
+                            <p class="invalid-feedback">{{ $errors->first('nickname')}}</p>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('email',trans('user.email').'*', ['class' => 'font-weight-bold']) !!}
+                            {!! Form::label('email',trans('admin.email').'*', ['class' => 'font-weight-bold']) !!}
                             {!! Form::email('email',null, ['class' => 'form-control '.($errors->has('email')?'is-invalid':null),'required'=>true]) !!}
                             <p class="invalid-feedback">{{ $errors->first('email')}}</p>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('disabled',trans('user.disabled'), ['class' => 'font-weight-bold']) !!}
+                            {!! Form::label('disabled',trans('admin.disabled'), ['class' => 'font-weight-bold']) !!}
                             {!! Form::checkbox('disabled', 1, null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('password',trans('user.password').'*', ['class' => 'font-weight-bold']) !!}
+                            {!! Form::label('password',trans('admin.password').'*', ['class' => 'font-weight-bold']) !!}
                             @if($method == "PATCH")
-                                &nbsp;<a href="#" id="change_password">@lang('user.change_password')</a>
+                                &nbsp;<a href="#" id="change_password">@lang('admin.change_password')</a>
                             @endif
                             {!! Form::password('password',['class' => 'form-control '.($errors->has('password')?'is-invalid':null),'required'=>true, 'disabled'=>($method=="PATCH")]) !!}
                             <p class="invalid-feedback">{{ $errors->first('password')}}</p>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('password_confirmation',trans('user.password_confirmation').'*', ['class' => 'font-weight-bold']) !!}
+                            {!! Form::label('password_confirmation',trans('admin.password_confirmation').'*', ['class' => 'font-weight-bold']) !!}
                             {!! Form::password('password_confirmation',['class' => 'form-control','required'=>true,'disabled'=>($method=="PATCH")]) !!}
 
                         </div>
