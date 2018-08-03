@@ -20,19 +20,19 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::label('title',trans('blog.title').'*') !!}
+                            {!! Form::label('title',trans('blog.title').'*', ['class' => 'font-weight-bold']) !!}
                             {!! Form::text('title',($blog->title?$blog->title:null), ['class' => 'form-control '.($errors->has('question')?'is-invalid':null),'required' => true]) !!}
                             <p class="invalid-feedback">{{ $errors->first('title')}}</p>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('summary',trans('blog.summary').'*') !!}
+                            {!! Form::label('summary',trans('blog.summary').'*', ['class' => 'font-weight-bold']) !!}
                             {!! Form::textarea('summary',($blog->summary?$blog->summary:null), ['class' => 'form-control', 'required' => true, 'rows' => 6]) !!}
                             <p class="invalid-feedback" style="display: {{ ($errors->has('summary')?'block':'none') }}">{{ $errors->first('summary')}}</p>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            {!! Form::label('blog_category_id',trans('blog.category')) !!}
+                            {!! Form::label('blog_category_id',trans('blog.category'), ['class' => 'font-weight-bold']) !!}
                             {!! Form::select('blog_category_id',$blog->allBlogCategories(),null, ['class' => 'form-control '.($errors->has('category')?'is-invalid':null),'required' => true]) !!}
                             <p class="invalid-feedback">{{ $errors->first('category')}}</p>
                         </div>
@@ -42,14 +42,14 @@
                         {{--<p class="invalid-feedback">{{ $errors->first('post_date')}}</p>--}}
                         {{--</div>--}}
                         <div class="form-group">
-                            {!! Form::label('status',trans('blog.status')) !!}
+                            {!! Form::label('status',trans('blog.status'), ['class' => 'font-weight-bold']) !!}
                             {!! Form::select('status',$blog->getAllStatus(),null, ['class' => 'form-control '.($errors->has('status')?'is-invalid':null),'required' => true]) !!}
                             <p class="invalid-feedback">{{ $errors->first('status')}}</p>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('author',trans('blog.author')) !!}
-                            {!! Form::select('author',$blog->getAllAuthors(),null, ['class' => 'form-control '.($errors->has('author')?'is-invalid':null)]) !!}
-                            <p class="invalid-feedback">{{ $errors->first('author')}}</p>
+                            {!! Form::label('author_id',trans('blog.author'), ['class' => 'font-weight-bold']) !!}
+                            {!! Form::select('author_id',$blog->getAllAuthors(),null, ['class' => 'form-control '.($errors->has('author_id')?'is-invalid':null)]) !!}
+                            <p class="invalid-feedback">{{ $errors->first('author_id')}}</p>
                         </div>
                         <div class="form-group">
                             @if($blog->image)
@@ -57,7 +57,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            {!! Form::label('image',trans('blog.image')) !!}
+                            {!! Form::label('image',trans('blog.image'), ['class' => 'font-weight-bold']) !!}
                             {!! Form::file('image', ['class' => 'form-control '.($errors->has('image')?'is-invalid':null)]) !!}
                             <p class="invalid-feedback">{{ $errors->first('image')}}</p>
                         </div>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <label>@lang('blog.tags')</label>
+                            <label class="font-weight-bold">@lang('blog.tags')</label>
                             <select class="form-control select-tags" multiple="multiple" name="tags[]">
                                 @foreach($tags as $tag)
                                     <option value="{{$tag}}">{{ $tag }}</option>
@@ -82,7 +82,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('description',trans('blog.description').'*') !!}
+                            {!! Form::label('description',trans('blog.description').'*', ['class' => 'font-weight-bold']) !!}
                             {!! Form::textarea('description',($blog->description?$blog->description:null), ['class' => 'form-control tiny-mce', 'required' => true]) !!}
                             <p class="invalid-feedback" style="display: {{ ($errors->has('description')?'block':'none') }}">{{ $errors->first('description')}}</p>
                         </div>

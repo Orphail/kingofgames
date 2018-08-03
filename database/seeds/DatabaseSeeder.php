@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogCategoriesSeeder::class);
         $this->call(TagsSeeder::class);
         $this->call(BlogsSeeder::class);
+        $this->call(RanksSeeder::class);
+        $this->call(ConsolesSeeder::class);
+        $this->call(GenresSeeder::class);
     }
 }

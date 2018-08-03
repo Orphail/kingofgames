@@ -19,6 +19,7 @@ class BlogsSeeder extends Seeder
             ',
             'blog_category_id' => 1,
             'status' => 'Borrador',
+            'author_id' => 1,
             'created_at' => DB::Raw('NOW()'),
             'updated_at' => DB::Raw('NOW()')
         ]);

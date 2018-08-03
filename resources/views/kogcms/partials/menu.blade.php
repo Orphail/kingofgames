@@ -11,11 +11,13 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item {{ preg_match('/user/',url()->current())?'active':'' }}">
-                                <a class="nav-link" href="{{ route('user.index') }}">@lang('user.home')</a>
-                            </li>
-                            <li class="nav-item {{ preg_match('/page/',url()->current())?'active':'' }}">
-                                <a class="nav-link" href="{{ route('page.index') }}">@lang('page.home')</a>
+                            <li class="nav-item dropdown {{ preg_match('/(user|rank)/',url()->current())?'active':'' }}">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#" data-toggle="dropdown">@lang('user.home')</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item {{ preg_match('/user/',url()->current())?'active':'' }}" href="{{ route('user.index') }}">@lang('user.home')</a>
+                                    <a class="dropdown-item {{ preg_match('/rank/',url()->current())?'active':'' }}" href="{{ route('rank.index') }}">@lang('rank.home')</a>
+                                </div>
                             </li>
                             <li class="nav-item dropdown {{ preg_match('/\b(blog|blogCategory|tag|home-banner)\b/',url()->current())?'active':'' }}">
                                 <a class="nav-link dropdown-toggle"
@@ -27,6 +29,19 @@
                                     <a class="dropdown-item {{ preg_match('/home-banner/',url()->current())?'active':'' }}" href="{{ route('home-banner.index') }}">@lang('home-banner.home')</a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown {{ preg_match('/(videogame|console|genre)/',url()->current())?'active':'' }}">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#" data-toggle="dropdown">@lang('videogame.home')</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item {{ preg_match('/videogame/',url()->current())?'active':'' }}" href="{{ route('videogame.index') }}">@lang('videogame.home')</a>
+                                    <a class="dropdown-item {{ preg_match('/console/',url()->current())?'active':'' }}" href="{{ route('console.index') }}">@lang('console.home')</a>
+                                    <a class="dropdown-item {{ preg_match('/genre/',url()->current())?'active':'' }}" href="{{ route('genre.index') }}">@lang('genre.home')</a>
+                                </div>
+                            </li>
+                            <li class="nav-item {{ preg_match('/page/',url()->current())?'active':'' }}">
+                                <a class="nav-link" href="{{ route('page.index') }}">@lang('page.home')</a>
+                            </li>
+
                         </ul>
                         <div class="btn-group mr-1">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

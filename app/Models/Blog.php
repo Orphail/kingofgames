@@ -34,14 +34,9 @@ class Blog extends Model
         ];
     }
 
-    public function category()
+    public function blogCategory()
     {
         return $this->belongsTo(BlogCategory::class);
-    }
-
-    public function categoryName($id)
-    {
-        return BlogCategory::find($id)->name;
     }
 
     public function allBlogCategories()
@@ -56,16 +51,11 @@ class Blog extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function getAuthorName()
-    {
-        return User::find($this->author)->name;
+        return $this->belongsTo(Admin::class);
     }
 
     public function getAllAuthors()
     {
-        return User::where('admin', true)->pluck('name', 'id');
+        return Admin::pluck('nickname', 'id');
     }
 }

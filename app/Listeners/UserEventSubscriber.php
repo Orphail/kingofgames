@@ -22,7 +22,7 @@ class UserEventSubscriber
         if ($event->user instanceOf Admin)
         {
             Session::put('admin',true);
-            Session::put('member_id',null);
+//            Session::put('admin_id',$event->user->id);
         } else {
             Session::put('admin',false);
             Session::put('member_id',$event->user->id);

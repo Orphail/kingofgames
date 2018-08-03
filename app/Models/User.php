@@ -20,8 +20,10 @@ class User extends Authenticatable
     protected $fillable = [
         'nickname',
         'email',
+        'rank_id',
         'password',
         'newsletter',
+        'image',
         'disabled'
     ];
 
@@ -38,11 +40,28 @@ class User extends Authenticatable
     public $rules = [
         'nickname' => 'required|max:255',
         'email' => 'required|email|unique:users',
-        'password' => 'required|confirmed|min:8|max:16|alpha_dash'
+        'password' => 'required|confirmed|min:8|max:16|alpha_dash',
+        'image' => 'image'
     ];
 
     public function blogs()
     {
         return $this->hasMany(Blog::class);
     }
+
+    public function rank()
+    {
+        return $this->belongsTo(Rank::class);
+    }
+
+    public function videogames()
+    {
+        return $this->belongsToMany(Videogame::class);
+    }
+
+    public function getAllRanks()
+    {
+        return Rank::pluck('name','id');
+    }
+
 }

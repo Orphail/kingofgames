@@ -36,7 +36,7 @@ class HomeBannerController extends Controller
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->validate($request, ['image' => 'max:' . $post_max_size]);
-            $file = $request->image->store($HomeBanner->id, 'public');
+            $file = $request->image->store('HomeBanners/' . $HomeBanner->id, 'public');
             if ($HomeBanner->image && file_exists(public_path('uploads/' . $HomeBanner->image))) {
                 unlink(public_path('uploads/' . $HomeBanner->image));
             }
@@ -84,7 +84,7 @@ class HomeBannerController extends Controller
         $this->validate($request, $rules);
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->validate($request, ['image' => 'max:' . $post_max_size]);
-            $file = $request->image->store($HomeBanner->id, 'public');
+            $file = $request->image->store('HomeBanners/' . $HomeBanner->id, 'public');
             if ($HomeBanner->image && file_exists(public_path('uploads/' . $HomeBanner->image))) {
                 unlink(public_path('uploads/' . $HomeBanner->image));
             }

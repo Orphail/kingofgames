@@ -20,13 +20,13 @@ class CreateblogsTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->unsignedInteger('blog_category_id')->nullable();
-            $table->unsignedInteger('author')->nullable();
+            $table->unsignedInteger('author_id')->nullable();
             $table->string('tags')->nullable();
             $table->string('status')->nullable();
             $table->date('post_date')->nullable();
             $table->timestamps();
             $table->foreign('blog_category_id')->references('id')->on('blog_categories')->onDelete('set null');
-            $table->foreign('author')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('author_id')->references('id')->on('admins')->onDelete('set null');
         });
     }
 

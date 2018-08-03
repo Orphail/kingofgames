@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="offset-4 col-4 offset-4">
                         <div class="form-group">
-                            {!! Form::label('name',trans('blog_category.name').'*') !!}
+                            {!! Form::label('name',trans('blog_category.name').'*', ['class' => 'font-weight-bold']) !!}
                             {!! Form::text('name',($blogCategory->name?$blogCategory->name:null), ['class' => 'form-control '.($errors->has('name')?'is-invalid':null),'required' => true]) !!}
                             <p class="invalid-feedback">{{ $errors->first('name')}}</p>
                         </div>

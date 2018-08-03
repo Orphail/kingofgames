@@ -10,6 +10,8 @@ return [
     'change_password' => 'Cambiar contraseña',
     'disabled' => 'Deshabilitar',
     'enabled' => 'Habilitado',
-    'created_at' => 'Alta'
+    'created_at' => 'Alta',
+    'rank' => 'Rango',
+    'image' => 'Imagen',
 
 ];

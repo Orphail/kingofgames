@@ -81,8 +81,8 @@ class BlogController extends Controller
         if (array_key_exists('delete_image', $post)) {
             $post['image'] = null;
         }
-        $post['tags'] = json_encode($post['tags']);
-        $post['author'] = $request->get('author') ? $request->get('author') : $request->session()->get('admin_id');
+        $post['tags'] = $request->get('tags') ? json_encode($post['tags']) : null;
+        $post['author_id'] = $request->get('author_id') ? $request->get('author_id') : $request->session()->get('admin_id');
         $blog->update($post);
         return redirect(route('blog.index'))->withMessage(trans('admin.insert_ok'));
     }
@@ -99,16 +99,10 @@ class BlogController extends Controller
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->validate($request, ['image' => 'max:' . $post_max_size]);
             $file = $request->image->store($blog->id, 'public');
-            if ($blog->image && file_exists(public_path('uploads/' . $blog->image))) {
-                unlink(public_path('uploads/' . $blog->image));
-            }
             $post['image'] = $file;
         }
-        if (array_key_exists('delete_image', $post)) {
-            $post['image'] = null;
-        }
-        $post['tags'] = json_encode($post['tags']);
-        $post['author'] = $request->get('author') ? $request->get('author') : $request->session()->get('admin_id');
+        $post['tags'] = $request->get('tags') ? json_encode($post['tags']) : null;
+        $post['author_id'] = $request->get('author_id') ? $request->get('author_id') : $request->session()->get('admin_id');
         $blog->create($post);
         return redirect(route('blog.index'))->withMessage(trans('admin.insert_ok'));
     }

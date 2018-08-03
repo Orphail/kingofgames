@@ -11,13 +11,12 @@
             </div>
         </div>
         <div class="card border-0">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 font-italic">
-                        <p>@lang('admin.required_fields')</p>
-                    </div>
-                </div>
+            <div class="card-body bg-light">
                 {!! Form::model($parameter, ['route' => $route, 'method'=>$method, 'files'=>true]) !!}
+                @csrf
+                <div class="alert alert-info">
+                    <span>@lang('admin.parameter_creation')</span>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">

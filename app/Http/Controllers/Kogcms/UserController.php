@@ -48,6 +48,21 @@ class UserController extends Controller
         }
         $this->validate($request, $rules);
         $post = $request->all();
+
+        $post_max_size = str_replace('M', null, ini_get('post_max_size')) * 1024;
+        $this->validate($request, $rules);
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $this->validate($request, ['image' => 'max:' . $post_max_size]);
+            $file = $request->image->store('Users/' . $user->nickname, 'public');
+            if ($user->image && file_exists(public_path('uploads/' . $user->image))) {
+                unlink(public_path('uploads/' . $user->image));
+            }
+            $post['image'] = $file;
+        }
+        if (array_key_exists('delete_image', $post)) {
+            $post['image'] = null;
+        }
+
         if ($request->get('password'))
             $post['password'] = bcrypt($post['password']);
 
@@ -59,16 +74,22 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $User = new User();
+        $user = new User();
         $this->validate($request, [
             'nickname' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8|max:16|alpha_dash'
         ]);
         $post = $request->all();
+        $post_max_size = str_replace('M', null, ini_get('post_max_size')) * 1024;
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $this->validate($request, ['image' => 'max:' . $post_max_size]);
+            $file = $request->image->store('Users/' . $user->id, 'public');
+            $post['image'] = $file;
+        }
         $post['password'] = bcrypt($post['password']);
         $post['disabled'] = $request->get('disabled')?1:0;
-        $User->create($post);
+        $user->create($post);
         return redirect(route('user.index'))->withMessage(trans('admin.insert_ok'));
     }
 

@@ -32,12 +32,12 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-group">
-                            {!! Form::label('title',trans('home-banner.title').'*') !!}
+                            {!! Form::label('title',trans('home-banner.title').'*', ['class' => 'font-weight-bold']) !!}
                             {!! Form::text('title',($HomeBanner->title?$HomeBanner->title:null), ['class' => 'form-control '.($errors->has('title')?'is-invalid':null),'required' => true]) !!}
                             <p class="invalid-feedback">{{ $errors->first('title')}}</p>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('link',trans('home-banner.link')) !!}
+                            {!! Form::label('link',trans('home-banner.link'), ['class' => 'font-weight-bold']) !!}
                             {!! Form::text('link',($HomeBanner->link?$HomeBanner->link:null), ['class' => 'form-control']) !!}
                             <p class="invalid-feedback" style="display: {{ ($errors->has('link')?'block':'none') }}">{{ $errors->first('link')}}</p>
                         </div>
@@ -47,7 +47,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            {!! Form::label('image',trans('home-banner.image')) !!}
+                            {!! Form::label('image',trans('home-banner.image'), ['class' => 'font-weight-bold']) !!}
                             {!! Form::file('image', ['class' => 'form-control '.($errors->has('image')?'is-invalid':null)]) !!}
                             <p class="invalid-feedback">{{ $errors->first('image')}}</p>
                         </div>

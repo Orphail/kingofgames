@@ -20,10 +20,10 @@
 						<img class="small-thumbnail" src="{{asset('uploads/'.$blog->image)}}"/>
 					@endif
 				</td>
-				<td>{{ str_limit($blog->summary, 100) }}</td>
-				<td>{{ $blog->categoryName($blog->blog_category_id) }}</td>
-				<td>{{ implode(', ',json_decode($blog->tags)) }}</td>
-				<td>{{ $blog->getAuthorName() }}</td>
+				<td>{{ str_limit($blog->summary, 50) }}</td>
+				<td>{{ $blog->blogCategory->name }}</td>
+				<td>{{ $blog->tags ? implode(', ',json_decode($blog->tags)) : null }}</td>
+				<td>{{ $blog->author->nickname }}</td>
 				<td>{{ $blog->created_at->format('d-m-Y') }}</td>
 				<td>
 					<div class="dropdown pull-right">

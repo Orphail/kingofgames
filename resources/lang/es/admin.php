@@ -53,6 +53,9 @@ return [
     'blog' => 'Blog',
     'blog_creation' => 'Creación de entradas del blog',
     'home-banner_creation' => 'Creación de las imágenes del slide de la home',
+    'parameter_creation' => 'Creación de los parámetros de la web',
+    'user_creation' => 'Creación de los usuarios',
+    'videogame_creation' => 'Creación de los videojuegos',
     'website' => 'Sitio web',
 
 ];

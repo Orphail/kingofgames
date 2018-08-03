@@ -18,11 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('nickname');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->unsignedInteger('rank_id')->nullable();
-            $table->integer('akogp');
-            $table->integer('kog_points');
-            $table->integer('total_points');
+            $table->integer('akogp')->nullable();
+            $table->integer('kog_points')->nullable();
+            $table->integer('total_points')->nullable();
             $table->boolean('newsletter')->default(0);
             $table->boolean('disabled')->default(0);
             $table->rememberToken();
@@ -40,4 +40,5 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
+
 }

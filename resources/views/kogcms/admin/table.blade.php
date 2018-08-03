@@ -1,7 +1,7 @@
 @inject('CommonController','App\Http\Controllers\Kogcms\CommonController')
 @include('partials.form-totals')
 
-<table class="table table-comercios table-striped">
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th><a href="{{ route('admin.index',['filter'=> request('filter'), 'sort'=>'name','order'=>(request('sort')=='name' && request('order')=="asc"?'desc':'asc')]) }}">@lang('admin.nickname')</a></th>

@@ -33,6 +33,10 @@ Route::middleware(['auth:web','admin.protect'])->namespace('Kogcms')->group(func
     Route::resource('blogCategory', 'BlogCategoryController');
     Route::resource('tag', 'TagController');
     Route::resource('home-banner', 'HomeBannerController');
+    Route::resource('genre', 'GenreController');
+    Route::resource('console', 'ConsoleController');
+    Route::resource('rank', 'RankController');
+    Route::resource('videogame', 'VideogameController');
     Route::get('change-boolean', ['as' => 'itemcms.change-boolean', 'uses' => 'CommonController@changeBoolean']);
     Route::get('change-order', ['as' => 'itemcms.change-order', 'uses' => 'CommonController@changeOrder']);
 
