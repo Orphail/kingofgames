@@ -16,6 +16,12 @@
 @include('kogcms.partials.menu')
 @include('partials.empty-modal')
 @yield('content')
+<script>
+    var delete_body = "@lang('admin.delete_body')";
+    var	delete_title = "@lang('admin.delete_title')";
+    var protocol_alert = "@lang('admin.protocol_alert')";
+    var order_alert = "@lang('admin.order_alert')";
+</script>
 <footer>
     @include('common.footer')
 </footer>

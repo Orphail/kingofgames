@@ -56,6 +56,12 @@ return [
     'parameter_creation' => 'Creación de los parámetros de la web',
     'user_creation' => 'Creación de los usuarios',
     'videogame_creation' => 'Creación de los videojuegos',
+    'tournament_creation' => 'Creación de torneos',
+    'tournament_game_creation' => 'Alta de videojuego para el torneo :tournament',
+    'tournament_player_creation' => 'Alta de participantes para el torneo :tournament',
     'website' => 'Sitio web',
-
+    'delete_body' => 'Quieres eliminar este registro?',
+    'delete_title' => 'Eliminar registro',
+    'protocol_alert' => 'La url debe contener el protocolo http/https/mailto.',
+    'order_alert' => 'El campo orden requiere un formato numérico',
 ];
