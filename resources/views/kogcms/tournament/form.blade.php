@@ -17,6 +17,15 @@
                 <div class="alert alert-info">
                     <span>@lang('admin.tournament_creation')</span>
                 </div>
+                @if($errors->any())
+                    <div class="alert alert-danger align-items-center">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="offset-3 col-6 offset-3">
                         <div class="form-group">

@@ -38,12 +38,8 @@
                                     <a class="dropdown-item {{ preg_match('/genre/',url()->current())?'active':'' }}" href="{{ route('genre.index') }}">@lang('genre.home')</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown {{ preg_match('/(tournament)/',url()->current())?'active':'' }}">
-                                <a class="nav-link dropdown-toggle"
-                                   href="#" data-toggle="dropdown">@lang('tournament.home')</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item {{ preg_match('/tournament/',url()->current())?'active':'' }}" href="{{ route('tournament.index') }}">@lang('tournament.home')</a>
-                                </div>
+                            <li class="nav-item {{ preg_match('/tournament/',url()->current())?'active':'' }}">
+                                <a class="nav-link" href="{{ route('tournament.index') }}">@lang('tournament.home')</a>
                             </li>
                             <li class="nav-item {{ preg_match('/page/',url()->current())?'active':'' }}">
                                 <a class="nav-link" href="{{ route('page.index') }}">@lang('page.home')</a>

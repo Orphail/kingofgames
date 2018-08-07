@@ -79,7 +79,7 @@ class VideogameController extends Controller
         try {
             $videogame = new Videogame();
             $this->validate($request, $videogame->rules);
-            $videogame->create($request->all());
+            $videogame = $videogame->create($request->all());
             $videogame->consoles()->sync($request->get('consoles'));
             return redirect(route('videogame.index'))->withMessage(trans('admin.insert_ok'));
         } catch (\Exception $exception) {

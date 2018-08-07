@@ -15,14 +15,14 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nickname')->unique();
-            $table->unsignedInteger('tournament_id')->nullable();
-            $table->unsignedInteger('videogame_id')->nullable();
+            $table->unsignedInteger('tournament_id');
+            $table->string('nickname')->nullable();
+            $table->string('videogame')->nullable();
             $table->integer('score')->nullable();
             $table->integer('evaluation')->nullable();
             $table->timestamps();
+            $table->unique(['nickname','videogame','tournament_id']);
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
-            $table->foreign('videogame_id')->references('id')->on('videogames')->onDelete('cascade');
         });
     }
 

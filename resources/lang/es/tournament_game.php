@@ -6,4 +6,6 @@ return [
     'players' => 'Participantes',
     'videogame' => 'Videojuego',
     'results' => 'Resultados',
+    'champion' => 'Campeón',
+    'detailed_results' => 'Resultados detallados',
 ];

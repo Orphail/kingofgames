@@ -24,7 +24,11 @@ class TournamentGameController extends Controller
         $field = ($request->get('sort')) ? $request->get('sort') : "id";
         $desc = ($request->get('order')) ? $request->get('order') : 'desc';
         $tournament = Tournament::find($tournament_id);
-        $tournamentGames = Result::all();
+        $tournamentGames = Result::select('videogame')
+            ->where('tournament_id', $tournament_id)
+            ->where('videogame', '!=', null)
+            ->groupBy('videogame')
+            ->get();
         return view('kogcms.tournament.videogame.index', [
             'tournamentGames' => $tournamentGames,
             'sort' => $field,
@@ -33,16 +37,18 @@ class TournamentGameController extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit($tournament_id, $videogame)
     {
-        $tournamentGame = Result::find($id);
-        $tournament = Tournament::find($tournamentGame->tournament_id);
+        $tournament = Tournament::find($tournament_id);
+        $tournamentGame = Result::where('tournament_id', $tournament_id)->where('videogame', $videogame)->first();
+        $videogamesUsed = Result::where('tournament_id', $tournament_id)->get()->toArray();
         return view('kogcms.tournament.videogame.form', [
             'tournamentGame' => $tournamentGame,
-            'route' => ['tournamentGame.update', $tournament->id, $tournamentGame],
+            'route' => ['tournamentGame.update', $tournament_id, $tournamentGame->videogame],
             'method' => 'PATCH',
             'breadcrumb_title' => trans('admin.edit'),
             'tournament' => $tournament,
+            'videogamesUsed' => array_column($videogamesUsed, 'videogame'),
         ]);
     }
 
@@ -50,46 +56,79 @@ class TournamentGameController extends Controller
     {
         $tournament = Tournament::find($tournament_id);
         $tournamentGame = new Result();
+        $videogamesUsed = Result::where('tournament_id', $tournament_id)->get()->toArray();
         return view('kogcms.tournament.videogame.form', [
             'tournamentGame' => $tournamentGame,
             'route' => ['tournamentGame.store', $tournament->id],
             'method' => 'POST',
             'breadcrumb_title' => trans('admin.create'),
             'tournament' => $tournament,
+            'videogamesUsed' => array_column($videogamesUsed, 'videogame'),
         ]);
     }
 
-    public function update($tournament_id, $tournamentGame_id, Request $request)
+    public function update($tournament_id, $videogame, Request $request)
     {
-        $tournamentGame = Result::find($tournamentGame_id);
-        $post = $request->all();
-        $post['tournament_id'] = $tournament_id;
-        $post['videogame_id'] = $tournamentGame_id;
-        $tournamentGame->update($post);
+        $inscriptions = Result::where('tournament_id', $tournament_id)
+            ->where('videogame', $videogame)->get();
+        foreach ($inscriptions as $inscription) {
+            $tournamentGame = Result::where('tournament_id', $tournament_id)
+                ->where('videogame', $videogame)
+                ->where('nickname', $inscription->nickname)->first();
+            $tournamentGame->tournament_id = $tournament_id;
+            $tournamentGame->nickname = $inscription->nickname;
+            $tournamentGame->videogame = $request->get('videogame');
+            $tournamentGame->save();
+        }
         return redirect(route('tournamentGame.index', $tournament_id))->withMessage(trans('admin.insert_ok'));
     }
 
 
     public function store($tournament_id, Request $request)
     {
-        $post = $request->all();
-        $tournamentGame = new Result();
-        $post['tournament_id'] = $tournament_id;
-        $post['videogame_id'] = $request->get('videogame_id');
-        $tournamentGame->create($post);
+        $rs = Result::select('nickname')
+            ->where('tournament_id', $tournament_id)
+            ->groupBy('nickname')->get()->toArray();
+        $inscriptions = array_column($rs, 'nickname');
+        if (!empty($inscriptions)) {
+            foreach ($inscriptions as $inscription) {
+                $tournamentGame = new Result();
+                $tournamentGame->tournament_id = $tournament_id;
+                $tournamentGame->nickname = $inscription;
+                $tournamentGame->videogame = $request->get('videogame');
+                $tournamentGame->save();
+            }
+        } else {
+            $tournamentGame = new Result();
+            $tournamentGame->tournament_id = $tournament_id;
+            $tournamentGame->nickname = null;
+            $tournamentGame->videogame = $request->get('videogame');
+            $tournamentGame->save();
+        }
+        $delete_results = Result::where('videogame', null)->get();
+        if($delete_results){
+            foreach($delete_results as $delete_result){
+                $delete_result->delete();
+            }
+        }
         return redirect(route('tournamentGame.index', $tournament_id))->withMessage(trans('admin.insert_ok'));
     }
 
-
-    public function destroy($id, Request $request)
+    public function destroy($tournament_id, $videogame, Request $request)
     {
         try {
-            $tournamentGame = Result::find($id);
-            $tournament_id = $tournamentGame->tournament_id;
-            $tournamentGame->delete();
+            $videogames = Result::where('tournament_id', $tournament_id)->where('videogame', $videogame)->get();
+            foreach ($videogames as $videogame) {
+                $inscriptions = Result::where('tournament_id', $tournament_id)->where('nickname', $videogame->nickname)->get();
+                if($inscriptions->count() > 1 || ($inscriptions->count() == 1 && $videogame->nickname == null)) {
+                    $videogame->delete();
+                } else {
+                    $videogame->videogame = null;
+                    $videogame->save();
+                }
+            }
             return redirect(route('tournamentGame.index', $tournament_id))
-                ->back()->withMessage(trans('admin.delete_ok'));
-
+                ->withMessage(trans('admin.delete_ok'));
         } catch (\Exception $exception) {
             return redirect(route('tournamentGame.index', $tournament_id))
                 ->withMessage($exception->getMessage());

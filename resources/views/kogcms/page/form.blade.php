@@ -16,6 +16,15 @@
                 <div class="alert alert-info">
                     <span>@lang('page.description')</span>
                 </div>
+                @if($errors->any())
+                    <div class="alert alert-danger align-items-center">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-group">

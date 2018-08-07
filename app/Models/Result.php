@@ -18,6 +18,7 @@ class Result extends Model
     ];
 
     public $rules = [
+        'nickname' => 'required|unique:results'
     ];
 
     public function videogame()

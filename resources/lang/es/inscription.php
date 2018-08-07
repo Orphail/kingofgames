@@ -7,4 +7,6 @@ return [
     'player' => 'Participante',
     'videogame' => 'Videojuego',
     'results' => 'Resultados',
+    'total_score' => 'Puntos totales',
+    'detailed_results' => 'Resultados detallados',
 ];

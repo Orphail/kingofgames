@@ -19,6 +19,15 @@
                 <div class="alert alert-info">
                     <span>@lang('admin.inscription_creation', ['tournament' => $tournament->name])</span>
                 </div>
+                @if($errors->any())
+                    <div class="alert alert-danger align-items-center">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="offset-3 col-6 offset-3">
                         <div class="form-group">
@@ -46,7 +55,10 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.select-player').select2({});
+            $('.select-player').select2({
+                tags: true,
+                selectOnBlur: true,
+            });
         });
     </script>
 @endpush

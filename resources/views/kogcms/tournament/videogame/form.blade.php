@@ -19,14 +19,25 @@
                 <div class="alert alert-info">
                     <span>@lang('admin.tournament_game_creation', ['tournament' => $tournament->name])</span>
                 </div>
+                @if($errors->any())
+                    <div class="alert alert-danger align-items-center">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="offset-3 col-6 offset-3">
                         <div class="form-group">
                             <label>@lang('tournament_game.videogame')</label>
-                            <select class="form-control select-videogame" name="videogame_id" required>
+                            <select class="form-control select-videogame" name="videogame" required>
                                 <option value="" disabled selected>Selecciona uno...</option>
-                                @foreach($tournamentGame->getAllVideogames() as $id => $videogame)
-                                    <option value="{{$id}}" {{ $tournamentGame->videogame_id == $id ? 'selected' : null }} >{{ $videogame }}</option>
+                                @foreach($tournamentGame->getAllVideogames() as $videogame)
+                                    @if(!in_array($videogame, $videogamesUsed) || $tournamentGame->videogame == $videogame)
+                                        <option value="{{$videogame}}" {{ $tournamentGame->videogame == $videogame ? 'selected' : null }} >{{ $videogame }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -45,6 +56,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.select-videogame').select2({
+
             });
         });
     </script>
