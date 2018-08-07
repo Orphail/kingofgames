@@ -58,7 +58,7 @@ return [
     'videogame_creation' => 'Creación de los videojuegos',
     'tournament_creation' => 'Creación de torneos',
     'tournament_game_creation' => 'Alta de videojuego para el torneo :tournament',
-    'tournament_player_creation' => 'Alta de participantes para el torneo :tournament',
+    'inscription_creation' => 'Alta de participantes para el torneo :tournament',
     'website' => 'Sitio web',
     'delete_body' => 'Quieres eliminar este registro?',
     'delete_title' => 'Eliminar registro',

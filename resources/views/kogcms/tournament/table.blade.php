@@ -17,7 +17,7 @@
             <td>{{ $tournament->name }}</td>
             <td>{{ $tournament->date }}</td>
             <td>{{ $tournament->getAllCategories()[$tournament->category] }}</td>
-            <td class="text-center"><a class="btn btn-sm btn-primary" href="{{ route('tournamentPlayer.index', $tournament->id) }}">Acceder</a></td>
+            <td class="text-center"><a class="btn btn-sm btn-primary" href="{{ route('inscription.index', $tournament->id) }}">Acceder</a></td>
             <td class="text-center"><a class="btn btn-sm btn-warning" href="{{ route('tournamentGame.index', $tournament->id) }}">Acceder</a></td>
             <td>
                 <div class="dropdown pull-right">

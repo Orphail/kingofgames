@@ -10,8 +10,9 @@ class Result extends Model
 {
     protected $fillable = [
         'id',
-        'tournament_game_id',
-        'tournament_player_id',
+        'tournament_id',
+        'videogame_id',
+        'nickname',
         'score',
         'evaluation'
     ];
@@ -19,15 +20,26 @@ class Result extends Model
     public $rules = [
     ];
 
-    public function tournamentGames()
+    public function videogame()
     {
-        return $this->belongsTo(TournamentGame::class);
+        return $this->belongsTo(Videogame::class);
     }
 
-    public function tournamentPlayers()
+    public function tournament()
     {
-        return $this->belongsTo(TournamentPlayer::class);
+        return $this->belongsTo(Tournament::class);
     }
+
+    public function getAllUsers()
+    {
+        return User::pluck('nickname', 'id');
+    }
+
+    public function getAllVideogames()
+    {
+        return Videogame::pluck('title', 'id');
+    }
+
 }
 
 

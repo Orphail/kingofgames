@@ -19,21 +19,21 @@ class MyProfileController extends Controller
     {
         $user = auth()->user();
         $baseTheme = 'kogcms.base';
-        return view('common.my-profile',['user'=>$user,'baseTheme'=>$baseTheme]);
+        return view('common.my-profile', ['user' => $user, 'baseTheme' => $baseTheme]);
     }
 
     public function update(User $user, Request $request)
     {
         $rules = $user->rules;
-        $rules['email'] = 'required|email|unique:users,email,'.$user->id;
-        if (is_null($request->get('password')))
-        {
+        $rules['email'] = 'required|email|unique:users,email,' . $user->id;
+        if (is_null($request->get('password'))) {
             unset($rules['password']);
         }
         $this->validate($request, $rules);
         $post = $request->all();
-        if ($request->get('password'))
+        if ($request->get('password')) {
             $post['password'] = bcrypt($post['password']);
+        }
 
         $user->update($post);
         return redirect(route('admin.index'))->withMessage(trans('admin.edit_ok'));

@@ -8,6 +8,8 @@ use Carbon\Carbon;
 
 class BlogCategory extends Model
 {
+    protected $table = 'blog_categories';
+
     protected $fillable = [
         'id',
         'name'

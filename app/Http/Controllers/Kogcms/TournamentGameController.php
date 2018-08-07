@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Kogcms;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tournament;
-use App\Models\TournamentGame;
+use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -24,7 +24,7 @@ class TournamentGameController extends Controller
         $field = ($request->get('sort')) ? $request->get('sort') : "id";
         $desc = ($request->get('order')) ? $request->get('order') : 'desc';
         $tournament = Tournament::find($tournament_id);
-        $tournamentGames = TournamentGame::all();
+        $tournamentGames = Result::all();
         return view('kogcms.tournament.videogame.index', [
             'tournamentGames' => $tournamentGames,
             'sort' => $field,
@@ -35,7 +35,7 @@ class TournamentGameController extends Controller
 
     public function edit($id)
     {
-        $tournamentGame = TournamentGame::find($id);
+        $tournamentGame = Result::find($id);
         $tournament = Tournament::find($tournamentGame->tournament_id);
         return view('kogcms.tournament.videogame.form', [
             'tournamentGame' => $tournamentGame,
@@ -49,7 +49,7 @@ class TournamentGameController extends Controller
     public function create($tournament_id)
     {
         $tournament = Tournament::find($tournament_id);
-        $tournamentGame = new TournamentGame();
+        $tournamentGame = new Result();
         return view('kogcms.tournament.videogame.form', [
             'tournamentGame' => $tournamentGame,
             'route' => ['tournamentGame.store', $tournament->id],
@@ -61,7 +61,7 @@ class TournamentGameController extends Controller
 
     public function update($tournament_id, $tournamentGame_id, Request $request)
     {
-        $tournamentGame = TournamentGame::find($tournamentGame_id);
+        $tournamentGame = Result::find($tournamentGame_id);
         $post = $request->all();
         $post['tournament_id'] = $tournament_id;
         $post['videogame_id'] = $tournamentGame_id;
@@ -73,7 +73,7 @@ class TournamentGameController extends Controller
     public function store($tournament_id, Request $request)
     {
         $post = $request->all();
-        $tournamentGame = new TournamentGame();
+        $tournamentGame = new Result();
         $post['tournament_id'] = $tournament_id;
         $post['videogame_id'] = $request->get('videogame_id');
         $tournamentGame->create($post);
@@ -84,7 +84,7 @@ class TournamentGameController extends Controller
     public function destroy($id, Request $request)
     {
         try {
-            $tournamentGame = TournamentGame::find($id);
+            $tournamentGame = Result::find($id);
             $tournament_id = $tournamentGame->tournament_id;
             $tournamentGame->delete();
             return redirect(route('tournamentGame.index', $tournament_id))
