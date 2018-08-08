@@ -5,19 +5,19 @@
         <div class="row mb-3">
             <div class="col-6 pl-4">
                 <h3>
-                    <a href="{{route('tournamentGame.index', $tournament->id)}}" class="title-text">@lang('tournament_game.home', ['tournament' => $tournament->name])</a>
+                    <a href="{{route('kogGame.index', $tournament->id)}}" class="title-text">@lang('kog_game.home', ['tournament' => $tournament->name])</a>
                 </h3>
             </div>
             <div class="col-6 text-right">
-                <a class="btn btn-danger btn-sm" href="{{ route('tournamentGame.index', $tournament->id) }}">@lang('admin.back')</a>
+                <a class="btn btn-danger btn-sm" href="{{ route('kogGame.index', $tournament->id) }}">@lang('admin.back')</a>
             </div>
         </div>
         <div class="card border-0">
             <div class="card-body bg-light">
-                {!! Form::model($tournamentGame, ['route' => $route, 'method'=>$method, 'files'=>true]) !!}
+                {!! Form::model($kogGame, ['route' => $route, 'method'=>$method, 'files'=>true]) !!}
                 @csrf
                 <div class="alert alert-info">
-                    <span>@lang('admin.tournament_game_creation', ['tournament' => $tournament->name])</span>
+                    <span>@lang('admin.kog_game_creation', ['tournament' => $tournament->name])</span>
                 </div>
                 @if($errors->any())
                     <div class="alert alert-danger align-items-center">
@@ -31,12 +31,12 @@
                 <div class="row">
                     <div class="offset-3 col-6 offset-3">
                         <div class="form-group">
-                            <label>@lang('tournament_game.videogame')</label>
+                            <label>@lang('kog_game.videogame')</label>
                             <select class="form-control select-videogame" name="videogame" required>
                                 <option value="" disabled selected>Selecciona uno...</option>
-                                @foreach($tournamentGame->getAllVideogames() as $videogame)
-                                    @if(!in_array($videogame, $videogamesUsed) || $tournamentGame->videogame == $videogame)
-                                        <option value="{{$videogame}}" {{ $tournamentGame->videogame == $videogame ? 'selected' : null }} >{{ $videogame }}</option>
+                                @foreach($kogGame->getAllVideogames() as $videogame)
+                                    @if(!in_array($videogame, $videogamesUsed) || $kogGame->videogame == $videogame)
+                                        <option value="{{$videogame}}" {{ $kogGame->videogame == $videogame ? 'selected' : null }} >{{ $videogame }}</option>
                                     @endif
                                 @endforeach
                             </select>

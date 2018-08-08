@@ -29,19 +29,37 @@ class CommonController extends Controller
         class="change-boolean fa fa-lg ' . $class . '"></div>';
     }
 
-    public function changeOrder(Request $request)
+    public function changeValue(Request $request)
     {
         DB::table($request->table)->whereId($request->id)->update([$request->field => $request->value]);
         return response()->json(['success'=>true]);
     }
 
+    public function getScoreInput($model)
+    {
+        return '<input data-href="' . route('itemcms.change-value', [
+                'table' => $model->getTable(),
+                'id' => $model->id,
+                'field' => 'score'
+            ]) . '"class="change-value" value="'.$model->score.'"/>';
+    }
+
+    public function getEvaluationInput($model)
+    {
+        return '<input data-href="' . route('itemcms.change-value', [
+                'table' => $model->getTable(),
+                'id' => $model->id,
+                'field' => 'evaluation'
+            ]) . '"class="change-value" value="'.$model->evaluation.'"/>';
+    }
+
     public function getOrderInput($model)
     {
-        return '<input data-href="' . route('itemcms.change-order', [
+        return '<input data-href="' . route('itemcms.change-value', [
                 'table' => $model->getTable(),
                 'id' => $model->id,
                 'field' => 'order'
-            ]) . '"class="change-order" value="'.$model->order.'"/>';
+            ]) . '"class="change-value" value="'.$model->order.'"/>';
     }
 
 }

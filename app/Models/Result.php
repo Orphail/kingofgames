@@ -11,7 +11,7 @@ class Result extends Model
     protected $fillable = [
         'id',
         'tournament_id',
-        'videogame_id',
+        'videogame',
         'nickname',
         'score',
         'evaluation'
@@ -41,6 +41,23 @@ class Result extends Model
         return Videogame::pluck('title', 'id');
     }
 
+    public function getTotalScore($tournament_id, $nickname)
+    {
+        return Result::where('tournament_id', $tournament_id)->where('nickname', $nickname)->sum('score');
+    }
+
+    public function getChampion($tournament_id, $videogame)
+    {
+        $rs = Result::where('tournament_id', $tournament_id)
+            ->where('videogame', $videogame)
+            ->where('score', '!=', null)
+            ->orderBy('score', 'desc');
+        if ($rs->count()) {
+            return '<b>'.$rs->first()->nickname.'</b>';
+        } else {
+            return '<i>Ninguno</i>';
+        }
+    }
 }
 
 

@@ -41,34 +41,41 @@ Route::middleware(['auth:web','admin.protect'])->namespace('Kogcms')->group(func
 
     Route::get('inscription/{tournamentId}', [
         'as' => 'inscription.index', 'uses' => 'InscriptionController@index']);
-    Route::get('tournamentGame/{tournamentId}', [
-        'as' => 'tournamentGame.index', 'uses' => 'TournamentGameController@index']);
+    Route::get('kogGame/{tournamentId}', [
+        'as' => 'kogGame.index', 'uses' => 'KogGameController@index']);
 
     Route::get('inscription/create/{tournamentId}', [
         'as' => 'inscription.create', 'uses' => 'InscriptionController@create']);
-    Route::get('tournamentGame/create/{tournamentId}', [
-        'as' => 'tournamentGame.create', 'uses' => 'TournamentGameController@create']);
+    Route::get('kogGame/create/{tournamentId}', [
+        'as' => 'kogGame.create', 'uses' => 'KogGameController@create']);
 
-    Route::get('inscription/edit/{tournamentId}/{nickname}', ['as' => 'inscription.edit', 'uses' => 'InscriptionController@edit']);
-    Route::get('tournamentGame/edit/{tournamentId}/{videogame}', ['as' => 'tournamentGame.edit', 'uses' => 'TournamentGameController@edit']);
+    Route::get('inscription/edit/{tournamentId}/{nickname}', [
+        'as' => 'inscription.edit', 'uses' => 'InscriptionController@edit']);
+    Route::get('kogGame/edit/{tournamentId}/{videogame}', [
+        'as' => 'kogGame.edit', 'uses' => 'KogGameController@edit']);
 
     Route::post('inscription/store/{tournamentId}', [
         'as' => 'inscription.store', 'uses' => 'InscriptionController@store']);
-    Route::post('tournamentGame/store/{tournamentId}', [
-        'as' => 'tournamentGame.store', 'uses' => 'TournamentGameController@store']);
+    Route::post('kogGame/store/{tournamentId}', [
+        'as' => 'kogGame.store', 'uses' => 'KogGameController@store']);
 
     Route::patch('inscription/update/{tournamentId}/{nickname}', [
         'as' => 'inscription.update', 'uses' => 'InscriptionController@update']);
-    Route::patch('tournamentGame/update/{tournamentId}/{videogame}', [
-        'as' => 'tournamentGame.update', 'uses' => 'TournamentGameController@update']);
+    Route::patch('kogGame/update/{tournamentId}/{videogame}', [
+        'as' => 'kogGame.update', 'uses' => 'KogGameController@update']);
 
     Route::delete('inscription/destroy/{tournamentId}/{nickname}', [
         'as' => 'inscription.destroy', 'uses' => 'InscriptionController@destroy']);
-    Route::delete('tournamentGame/destroy/{tournamentId}/{videogame}', [
-        'as' => 'tournamentGame.destroy', 'uses' => 'TournamentGameController@destroy']);
+    Route::delete('kogGame/destroy/{tournamentId}/{videogame}', [
+        'as' => 'kogGame.destroy', 'uses' => 'KogGameController@destroy']);
 
+    Route::get('inscriptionResult/{tournamentId}/{nickname}', [
+        'as' => 'inscriptionResult.index', 'uses' => 'InscriptionResultController@index']);
+    Route::get('kogGameResult/{tournamentId}/{videogame}', [
+        'as' => 'kogGameResult.index', 'uses' => 'KogGameResultController@index']);
+
+    Route::get('change-value', ['as' => 'itemcms.change-value', 'uses' => 'CommonController@changeValue']);
     Route::get('change-boolean', ['as' => 'itemcms.change-boolean', 'uses' => 'CommonController@changeBoolean']);
-    Route::get('change-order', ['as' => 'itemcms.change-order', 'uses' => 'CommonController@changeOrder']);
 
     Route::get('member/login-as/{user_id}',['as'=>'member.login-as-member','uses'=>'UserController@loginAsMember']);
 });
