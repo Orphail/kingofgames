@@ -22,6 +22,16 @@ class Videogame extends Model
         'players' => 'required|max:191',
     ];
 
+    public function numberPlayers()
+    {
+        return [
+          '1' => '1',
+          '1-2' => '1-2',
+          '1-4' => '1-4',
+          '+4' => '+4'
+        ];
+    }
+
     public function consoles(){
         return $this->belongsToMany(Console::class);
     }

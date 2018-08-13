@@ -34,7 +34,7 @@
                             <label>@lang('kog_game.videogame')</label>
                             <select class="form-control select-videogame" name="videogame" required>
                                 <option value="" disabled selected>Selecciona uno...</option>
-                                @foreach($kogGame->getAllVideogames() as $videogame)
+                                @foreach($kogGame->getAllVideogames($tournament) as $videogame)
                                     @if(!in_array($videogame, $videogamesUsed) || $kogGame->videogame == $videogame)
                                         <option value="{{$videogame}}" {{ $kogGame->videogame == $videogame ? 'selected' : null }} >{{ $videogame }}</option>
                                     @endif

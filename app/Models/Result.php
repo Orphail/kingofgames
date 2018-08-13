@@ -36,9 +36,16 @@ class Result extends Model
         return User::pluck('nickname', 'id');
     }
 
-    public function getAllVideogames()
+    public function getAllVideogames($tournament)
     {
-        return Videogame::pluck('title', 'id');
+        if($tournament->category == 'KOGTT') {
+            $videogames = Videogame::where('players', '1-4')->orWhere('players', '+4')->pluck('title', 'id');
+        } elseif ($tournament->category == 'KOGT') {
+            $videogames = Videogame::where('players', '1-4')->orWhere('players', '+4')->orWhere('players', '1-2')->pluck('title', 'id');
+        } else {
+            $videogames = Videogame::pluck('title', 'id');
+        }
+        return $videogames;
     }
 
     public function getTotalScore($tournament_id, $nickname)

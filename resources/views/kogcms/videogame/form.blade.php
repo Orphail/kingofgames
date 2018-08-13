@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('players',trans('videogame.players').'*', ['class' => 'font-weight-bold']) !!}
-                                    {!! Form::text('players',($videogame->players?$videogame->players:null), ['class' => 'form-control '.($errors->has('players')?'is-invalid':null),'required' => true]) !!}
+                                    {!! Form::select('players', $videogame->numberPlayers(), null, ['class' => 'form-control '.($errors->has('players')?'is-invalid':null),'required' => true]) !!}
                                     <p class="invalid-feedback">{{ $errors->first('players')}}</p>
                                 </div>
                             </div>
