@@ -8,11 +8,11 @@
                 <div class="text-right mb-3">
                     <a class="btn btn-primary btn-sm" href="{{ route('videogame.create') }}">@lang('admin.create')</a>
                 </div>
-                @if($videogames->isEmpty())
-                    @include('partials.no-results')
-                @else
+                {{--@if($videogames->isEmpty())--}}
+{{--                    @include('partials.no-results')--}}
+                {{--@else--}}
                     @include('kogcms.videogame.table')
-                @endif
+                {{--@endif--}}
             </div>
         </div>
     </div>

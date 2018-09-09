@@ -19,5 +19,12 @@
     "/js/jquery-ui/jquery-ui.theme.min.css": "/js/jquery-ui/jquery-ui.theme.min.css",
     "/js/jquery-ui/LICENSE.txt": "/js/jquery-ui/LICENSE.txt",
     "/js/jquery-ui/package.json": "/js/jquery-ui/package.json",
-    "/js/jquery-ui/README.md": "/js/jquery-ui/README.md"
+    "/js/jquery-ui/README.md": "/js/jquery-ui/README.md",
+    "/images/favicon.ico": "/images/favicon.ico",
+    "/images/sort_asc_disabled.png": "/images/sort_asc_disabled.png",
+    "/images/sort_asc.png": "/images/sort_asc.png",
+    "/images/sort_both.png": "/images/sort_both.png",
+    "/images/sort_desc_disabled.png": "/images/sort_desc_disabled.png",
+    "/images/sort_desc.png": "/images/sort_desc.png",
+    "/images/Sorting icons.psd": "/images/Sorting icons.psd"
 }

@@ -162,7 +162,7 @@ return [
         Dimsav\Translatable\TranslatableServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
-
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
 
 
@@ -215,8 +215,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class
-
+        'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
+        'DataTables' => \Yajra\DataTables\Facades\DataTables::class
     ],
 
 ];

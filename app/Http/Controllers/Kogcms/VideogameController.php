@@ -13,23 +13,40 @@ use App\Http\Controllers\Controller;
 use App\Models\Videogame;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Yajra\DataTables\DataTables;
 
 class VideogameController extends Controller
 {
-
     public function index(Request $request)
     {
-        $field = ($request->get('sort')) ? $request->get('sort') : "id";
-        $desc = ($request->get('order')) ? $request->get('order') : 'desc';
-
-        $videogames = Videogame::all();
-
-        return view('kogcms.videogame.index', [
-            'videogames' => $videogames,
-            'sort' => $field,
-            'desc' => $desc
-        ]);
+        if ($request->ajax()) {
+            return DataTables::of(Videogame::dtQuery())
+                ->addColumn('action', function (Videogame $videogame) {
+                    return view('common.link-dataTables-no-show', ['model' => $videogame])->render();
+                })
+                ->editColumn('title', function (Videogame $videogame) {
+                    return $videogame->title.' ('.$videogame->console_name.')';
+                })
+                ->make(true);
+        } else {
+            $videogame = new Videogame();
+            return view('kogcms.videogame.index')->with('videogame', $videogame);
+        }
     }
+
+//    public function index(Request $request)
+//    {
+//        $field = ($request->get('sort')) ? $request->get('sort') : "id";
+//        $desc = ($request->get('order')) ? $request->get('order') : 'desc';
+//
+//        $videogames = Videogame::all();
+//
+//        return view('kogcms.videogame.index', [
+//            'videogames' => $videogames,
+//            'sort' => $field,
+//            'desc' => $desc
+//        ]);
+//    }
 
     public function edit($id)
     {

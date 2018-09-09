@@ -10723,8 +10723,8 @@ svg > g > g:last-child {
   cursor: pointer;
 }
 
-.change-order {
-  width: 30px;
+.change-value {
+  width: 50px;
   text-align: center;
 }
 

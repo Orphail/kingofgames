@@ -37,7 +37,7 @@ return [
     'created_at' => 'Creado el',
     'updated_at' => 'Actualizado el',
     'results' => 'Mostrando :current de :total',
-    'search' => 'Buscar',
+//    'search' => 'Buscar',
     'link' => 'Enlace',
     'admin' => 'Admin',
     'next' => 'Siguiente',
@@ -64,4 +64,16 @@ return [
     'delete_title' => 'Eliminar registro',
     'protocol_alert' => 'La url debe contener el protocolo http/https/mailto.',
     'order_alert' => 'El campo orden requiere un formato numérico',
+
+    'lengthMenu' => 'Mostrando _MENU_ resultados por página',
+    'zeroRecords' =>'No se han encontrado resultados',
+    'info' =>'Mostrando _PAGE_ de _PAGES_',
+    'infoEmpty' => 'No hay registros disponibles',
+    'infoFiltered' =>'(Filtrando _MAX_ resultados del total)',
+    'first_page' =>'Primera',
+    'next_page' =>'Siguiente',
+    'prev_page' => 'Anterior',
+    'search' => 'Buscar por cualquier campo: ',
+    'processing' => 'Cargando...',
+
 ];
